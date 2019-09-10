@@ -1,21 +1,57 @@
 <template>
 	<div id="app">
-		<Navbar />
-		<router-view />
+		<div class="center container">
+			<div class="iris">
+				<div class="card transparent z-depth-0">
+					<h2 class="title">
+						Pizza
+						<span class="teal-text text-darken-1">Vue</span>
+					</h2>
+				</div>
+			</div>
+
+			<Navbar />
+
+			<router-view />
+
+			<Footer />
+		</div>
 	</div>
 </template>
 
 <script>
 import Navbar from '@/components/navigation/Navbar'
+import Footer from '@/components/navigation/Footer'
 
 export default {
 	name: 'App',
-	components: { Navbar }
+	components: { Navbar, Footer }
 }
 </script>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=B612:400,700&display=swap");
+
+body {
+	background: url("https://www.pizzahut.ro/assets/images/bk.jpg") repeat center
+		top;
+}
+
+.iris {
+	width: 100%;
+	background-image: url("assets/images/header.jpg");
+	background-repeat: no-repeat;
+	height: 200px;
+	background-size: cover;
+	object-fit: cover;
+}
+
+.iris h2 {
+	width: 100%;
+	padding-top: 71px;
+	padding-bottom: 71px;
+	background: rgba(230, 230, 230, 0.65);
+}
 
 #app {
 	font-family: "Inconsolata", Helvetica, Arial, sans-serif;

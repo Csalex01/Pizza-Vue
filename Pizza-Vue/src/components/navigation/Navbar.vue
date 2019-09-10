@@ -1,22 +1,25 @@
 <template>
-	<nav class="red">
-		<div class="nav-wrapper container">
-			<a href="#" class="brand-logo">Pizza-Vue</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li>
+	<!--
+    TODO
+
+    i. Re-arrange the buttons to a more likeable order
+
+	-->
+
+	<nav class="navbar container red">
+		<div class="nav-wrapper">
+			<ul id="nav-mobile" class="hide-on-med-and-down">
+				<li class="left">
 					<a href="#">Home</a>
 				</li>
-				<li>
+				<li class="left">
 					<a href="#">Order</a>
 				</li>
-				<li>
-					<a href="#">Signup</a>
+				<li class="right">
+					<a href="#" class="btn">Signup</a>
 				</li>
-				<li>
+				<li class="right">
 					<a href="#">Login</a>
-				</li>
-				<li>
-					<a href="#">Profile</a>
 				</li>
 			</ul>
 		</div>
@@ -33,4 +36,9 @@ export default {
 </script>
 
 <style>
+.navbar {
+	width: 100%;
+	padding: 0 20px 0 20px;
+	margin-top: 5px;
+}
 </style>
