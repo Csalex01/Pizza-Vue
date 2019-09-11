@@ -142,6 +142,7 @@
 import firebase from 'firebase'
 import db from '@/firebase/init'
 import validator from 'validator'
+import slugify from 'slugify'
 
 export default {
 	name: "Signup",
@@ -163,7 +164,7 @@ export default {
 		}
 	},
 	methods: {
-		async signup() {
+		validateForm() {
 			this.feedback = null
 
 			if (this.email && !validator.isEmail(this.email))
@@ -203,18 +204,46 @@ export default {
 
 			if (this.feedback) {
 				console.log("Unsuccessful form validation!")
-				return
+				return false
 			}
 
 			console.log("Successful form validation!")
+			return true
+
+		},
+		async signup() {
+			const isValid = this.validateForm()
+
+			if (!isValid)
+				return
 
 			try {
-				this.feedback = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+				const response = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+				const user = response.user
+				const slug = slugify(`${this.firstName} ${this.lastName}`, {
+					replacement: '-',
+					lower: true
+				})
+
+				const dbResponse = (
+					await db.collection("users").doc(slug).set({
+						firstName: this.firstName,
+						lastName: this.lastName,
+						slug,
+						cardNumber: this.cardNumber,
+						month: this.month,
+						year: this.year,
+						cvc2: this.cvc2,
+						address1: this.address1,
+						address2: this.address2,
+					})
+				)
+
+				this.$router.push({ name: 'Index' })
+
 			} catch (err) {
 				this.feedback = err
 			}
-
-			console.log(this.feedback)
 		}
 	}
 }

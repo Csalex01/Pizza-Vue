@@ -12,15 +12,19 @@
 					<li class="left">
 						<a href="#">Order</a>
 					</li>
-					<li class="right">
-						<router-link :to="{ name: 'Signup' }" class="btn waves-effect waves-light">Signup</router-link>
-					</li>
-					<li class="right">
-						<a href="#">Logut</a>
-					</li>
-					<li class="right">
-						<router-link :to="{ name: 'Login' }" class="waves-effect waves-light">Login</router-link>
-					</li>
+					<div v-if="!loggedIn">
+						<li class="right">
+							<router-link :to="{ name: 'Signup' }" class="btn waves-effect waves-light">Signup</router-link>
+						</li>
+						<li class="right">
+							<router-link :to="{ name: 'Login' }" class="waves-effect waves-light">Login</router-link>
+						</li>
+					</div>
+					<div v-else>
+						<li class="right">
+							<a @click="logout">Logut</a>
+						</li>
+					</div>
 				</ul>
 			</div>
 		</nav>
@@ -46,10 +50,23 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
 	name: "Navbar",
 	data() {
-		return {}
+		return {
+			loggedIn: false
+		}
+	},
+	methods: {
+		async logout() {
+			const response = await firebase.auth().signOut()
+			console.log(response)
+		}
+	},
+	created() {
+		firebase.auth().onAuthStateChanged(user => this.loggedIn = user ? true : false)
 	}
 }
 </script>
