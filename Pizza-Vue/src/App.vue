@@ -4,8 +4,11 @@
 			<div class="iris">
 				<div class="card transparent z-depth-0">
 					<h2 class="title">
-						Pizza
-						<span class="teal-text text-darken-1">Vue</span>
+						🍕 Pizza
+						<span class="teal-text text-darken-1">
+							<img src="@/assets/images/logo.png" height="50px" />
+							<span style="margin-left: -35px ">ue</span>
+						</span> 🍕
 					</h2>
 				</div>
 			</div>
@@ -33,8 +36,9 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=B612:400,700&display=swap");
 
 body {
-	background: url("https://www.pizzahut.ro/assets/images/bk.jpg") repeat center
-		top;
+	/* background: url("https://www.pizzahut.ro/assets/images/bk.jpg") repeat center
+		top; */
+	background: whitesmoke;
 }
 
 .iris {
@@ -50,7 +54,7 @@ body {
 	width: 100%;
 	padding-top: 71px;
 	padding-bottom: 71px;
-	background: rgba(230, 230, 230, 0.65);
+	background: rgba(230, 230, 230, 0.9);
 }
 
 #app {

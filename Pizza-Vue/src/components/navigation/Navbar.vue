@@ -5,25 +5,29 @@
     i. Re-arrange the buttons to a more likeable order
 
 	-->
-
-	<nav class="navbar container red">
-		<div class="nav-wrapper">
-			<ul id="nav-mobile" class="hide-on-med-and-down">
-				<li class="left">
-					<a href="#">Home</a>
-				</li>
-				<li class="left">
-					<a href="#">Order</a>
-				</li>
-				<li class="right">
-					<a href="#" class="btn">Signup</a>
-				</li>
-				<li class="right">
-					<a href="#">Login</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<div class="row">
+		<nav class="navbar container red z-depth-2">
+			<div class="nav-wrapper">
+				<ul id="nav-mobile" class>
+					<li class="left">
+						<router-link :to="{ name: 'Index' }">Home</router-link>
+					</li>
+					<li class="left">
+						<a href="#">Order</a>
+					</li>
+					<li class="right">
+						<router-link :to="{ name: 'Signup' }" class="btn waves-effect waves-light">Signup</router-link>
+					</li>
+					<li class="right">
+						<a href="#">Logut</a>
+					</li>
+					<li class="right">
+						<router-link :to="{ name: 'Login' }" class="waves-effect waves-light">Login</router-link>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
 </template>
 
 <script>
