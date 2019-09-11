@@ -1,10 +1,4 @@
 <template>
-	<!--
-    TODO
-
-    i. Re-arrange the buttons to a more likeable order
-
-	-->
 	<div class="row">
 		<nav class="navbar container red z-depth-2">
 			<div class="nav-wrapper">
@@ -31,6 +25,7 @@
 			</div>
 		</nav>
 		<ul class="sidenav" id="mobile-demo">
+			<h5 class="teal-text">Navigation buttons</h5>
 			<li>
 				<router-link :to="{ name: 'Index' }">Home</router-link>
 			</li>
@@ -53,7 +48,6 @@
 <script>
 export default {
 	name: "Navbar",
-	components: { Links },
 	data() {
 		return {}
 	}

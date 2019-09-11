@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 const firebaseConfig = {
     apiKey: "AIzaSyDp14JGkT7wTQQXaOjf2TxJBDvGkCi6EVA",
     authDomain: "pizza-vue-a1dc0.firebaseapp.com",

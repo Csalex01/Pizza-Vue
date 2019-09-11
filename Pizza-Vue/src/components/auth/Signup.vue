@@ -6,18 +6,32 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-					<input id="email" type="email" class="validate" v-model="email" />
+					<input id="email" type="email" class="validate" v-model="email" required aria-required="true" />
 					<label for="email">E-mail</label>
 				</div>
 				<div class="input-field col s6">
-					<input id="password" type="password" class="validate" v-model="password" />
+					<input
+						id="password"
+						type="password"
+						class="validate"
+						v-model="password"
+						required
+						aria-required="true"
+					/>
 					<label for="password">Password</label>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="input-field col s6 right">
-					<input id="confirmPassword" type="password" class="validate" v-model="confirmPassword" />
+					<input
+						id="confirmPassword"
+						type="password"
+						class="validate"
+						v-model="confirmPassword"
+						required
+						aria-required="true"
+					/>
 					<label for="confirmPassword">Confirm Password</label>
 				</div>
 			</div>
@@ -26,23 +40,44 @@
 				<div class="col s6 left">
 					<h5 class="row billing-payment-header teal-text darken-4">Billing Information</h5>
 					<div class="row input-field col s12">
-						<input type="text" id="firstName" v-model="firstName" />
+						<input
+							type="text"
+							id="firstName"
+							v-model="firstName"
+							class="validate"
+							required
+							aria-required="true"
+						/>
 						<label for="firstName">Your first name</label>
 					</div>
 					<div class="row input-field col s12">
-						<input type="text" id="lastname" v-model="lastName" />
+						<input
+							type="text"
+							id="lastname"
+							v-model="lastName"
+							class="validate"
+							required
+							aria-required="true"
+						/>
 						<label for="lastname">Your last name</label>
 					</div>
 					<div class="row input-field col s12">
-						<input type="text" id="company" v-model="company" />
+						<input type="text" id="company" v-model="company" class="validate" />
 						<label for="company">Company</label>
 					</div>
 					<div class="row input-field col s12">
-						<input type="text" id="address1" v-model="address1" />
+						<input
+							type="text"
+							id="address1"
+							v-model="address1"
+							class="validate"
+							required
+							aria-required="true"
+						/>
 						<label for="address1">Address 1</label>
 					</div>
 					<div class="row input-field col s12">
-						<input type="text" id="address2" v-model="address2" />
+						<input type="text" id="address2" v-model="address2" class="validate" />
 						<label for="address2">Address 2</label>
 					</div>
 				</div>
@@ -50,21 +85,44 @@
 				<div class="col s6 right">
 					<h5 class="row billing-payment-header darken-4 teal-text">Payment Information</h5>
 					<div class="row input-field col s12">
-						<input type="text" placeholder="0000 0000 0000 0000" id="cardNumber" v-model="cardNumber" />
+						<input
+							type="text"
+							placeholder="0000 0000 0000 0000"
+							id="cardNumber"
+							v-model="cardNumber"
+							class="validate"
+							required
+							aria-required="true"
+						/>
 						<label for="cardNumber">Your card number</label>
 					</div>
 					<div class="row col">
 						<div class="input-field col s6">
-							<input type="text" placeholder="mm" id="month" v-model="month" />
+							<input
+								type="text"
+								placeholder="mm"
+								id="month"
+								v-model="month"
+								class="validate"
+								required
+								aria-required="true"
+							/>
 							<label for="month">Month</label>
 						</div>
 						<div class="input-field col s6">
-							<input type="text" placeholder="yy" id="year" v-model="year" />
+							<input
+								type="text"
+								placeholder="yy"
+								id="year"
+								v-model="year"
+								class="validate"
+								required
+								aria-required="true"
+							/>
 							<label for="year">Year</label>
 						</div>
-
 						<div class="row input-field col s12">
-							<input type="text" id="cvc2" v-model="cvc2" />
+							<input type="text" id="cvc2" v-model="cvc2" class="validate" required aria-required="true" />
 							<label for="cvc2">CVV2/CVC2</label>
 						</div>
 					</div>
@@ -75,13 +133,16 @@
 				<h4 class="red-text">{{ feedback }}</h4>
 			</div>
 			<div class="row col s12">
-				<button type="submit" class="btn" @click.prevent="signup">Signup</button>
+				<button type="submit" class="btn" @click="signup">Signup</button>
 			</div>
 		</form>
 	</div>
 </template>
 
 <script>
+import firebase from 'firebase'
+import db from '@/firebase/init'
+
 export default {
 	name: "Signup",
 	data() {
@@ -116,6 +177,7 @@ export default {
 				this.month,
 				this.year,
 				this.cvc2,
+				this.feedback
 			)
 		}
 	}
@@ -123,6 +185,18 @@ export default {
 </script>
 
 <style>
+label {
+	width: 100%;
+}
+.input-field label:not(.active):after {
+	font-size: 0.8rem;
+	-webkit-transform: translateY(-140%);
+	-moz-transform: translateY(-140%);
+	-ms-transform: translateY(-140%);
+	-o-transform: translateY(-140%);
+	transform: translateY(-140%);
+}
+
 .signup {
 	max-width: 600px;
 }
