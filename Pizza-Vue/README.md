@@ -1,7 +1,5 @@
 # pizza-vue
 
-> A preparation for exam
-
 ## Build Setup
 
 ``` bash
