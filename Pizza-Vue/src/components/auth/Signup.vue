@@ -127,9 +127,8 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="row col sm12">
-				<p class="red-text" v-if="feedback">Error: {{ feedback }}</p>
+			<div class="row col sm12" v-if="feedback">
+				<p class="red-text">Error: {{ feedback }}</p>
 			</div>
 			<div class="row col s12">
 				<button type="submit" class="btn" @click.prevent="signup">Signup</button>

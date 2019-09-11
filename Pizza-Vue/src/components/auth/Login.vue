@@ -12,8 +12,8 @@
 				<input id="password" type="password" class="validate" v-model="password" />
 				<label for="password">Password</label>
 			</div>
-			<div class="row col sm12">
-				<h4 class="red-text">{{ feedback }}</h4>
+			<div class="row col sm12" v-if="feedback">
+				<p class="red-text left-align">Error: {{ feedback }}</p>
 			</div>
 			<div class="row col s12">
 				<button type="submit" class="btn" @click.prevent="login">Login</button>
@@ -23,18 +23,51 @@
 </template>
 
 <script>
+import slugify from 'slugify'
+import validator from 'validator'
+import firebase from 'firebase'
+
 export default {
 	name: "Login",
 	data() {
 		return {
 			email: null,
 			password: null,
-			feedback: null
+			feedback: null,
+			isValid: false
 		}
 	},
 	methods: {
-		login() {
-			console.log(this.email, this.password)
+		validateForm() {
+			this.feedback = null
+
+			if (this.email && !validator.isEmail(this.email))
+				this.feedback = "E-mail incorrect!"
+
+			if (!this.email || !this.password)
+				this.feedback = "All required fields must be filled!"
+
+
+			if (this.feedback) {
+				console.log("Unsuccessful form validation!")
+				return false
+			}
+
+			return true
+		},
+		async login() {
+			const isValid = this.validateForm()
+
+			if (!isValid)
+				return
+
+			try {
+				await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+
+				this.$router.push({ name: "Index" })
+			} catch (err) {
+				this.feedback = err.message
+			}
 		}
 	}
 }
