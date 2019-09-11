@@ -6,6 +6,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+$(document).ready(function () {
+  $('.sidenav').sidenav();
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<div class="center container">
-			<div class="iris">
+			<div class="iris hide-on-small-only">
 				<div class="card transparent z-depth-0">
 					<h2 class="title">
 						🍕 Pizza

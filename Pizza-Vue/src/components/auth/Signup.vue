@@ -16,9 +16,9 @@
 			</div>
 
 			<div class="row">
-				<div class="confirm-password input-field col s12 right">
-					<input id="password" type="password" class="validate" v-model="confirmPassword" />
-					<label for="password">Confirm Password</label>
+				<div class="input-field col s6 right">
+					<input id="confirmPassword" type="password" class="validate" v-model="confirmPassword" />
+					<label for="confirmPassword">Confirm Password</label>
 				</div>
 			</div>
 
@@ -125,10 +125,6 @@ export default {
 <style>
 .signup {
 	max-width: 600px;
-}
-
-.confirm-password {
-	max-width: 300px;
 }
 
 .billing-payment-header {
