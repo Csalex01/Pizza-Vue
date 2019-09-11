@@ -129,10 +129,10 @@
 			</div>
 
 			<div class="row col sm12">
-				<h4 class="red-text">{{ feedback }}</h4>
+				<p class="red-text" v-if="feedback">Error: {{ feedback }}</p>
 			</div>
 			<div class="row col s12">
-				<button type="submit" class="btn" @click="signup">Signup</button>
+				<button type="submit" class="btn" @click.prevent="signup">Signup</button>
 			</div>
 		</form>
 	</div>
@@ -141,6 +141,7 @@
 <script>
 import firebase from 'firebase'
 import db from '@/firebase/init'
+import validator from 'validator'
 
 export default {
 	name: "Signup",
@@ -162,22 +163,58 @@ export default {
 		}
 	},
 	methods: {
-		signup() {
-			console.log(
-				this.email,
-				this.password,
-				this.confirmPassword,
-				this.firstName,
-				this.lastName,
-				this.company,
-				this.address1,
-				this.address2,
-				this.cardNumber,
-				this.month,
-				this.year,
-				this.cvc2,
-				this.feedback
+		async signup() {
+			this.feedback = null
+
+			if (this.email && !validator.isEmail(this.email))
+				this.feedback = "E-mail incorrect!"
+
+			if (!this.password /* && this.password.length < 6 */)
+				this.feedback = "Password length must be at least 6!"
+
+			if (this.password != this.confirmPassword)
+				this.feedback = "The passwords do not match!"
+
+			if (this.cardNumber && !validator.isCreditCard(this.cardNumber))
+				this.feedback = "Invalid card number, or try using an other card!"
+
+			if (parseInt(this.month) < 1 || parseInt(this.month) > 12)
+				this.feedback = "Invalid month!"
+
+			if (parseInt(this.year) < 1 || parseInt(this.year) > 99)
+				this.feedback = "Invalid year!"
+
+			if (parseInt(this.cvc2) < 100 || parseInt(this.cvc2) > 999)
+				this.feedback = "Invalid CVV2/CVC2 number!"
+
+			if (
+				!this.email ||
+				!this.password ||
+				!this.confirmPassword ||
+				!this.firstName ||
+				!this.lastName ||
+				!this.cardNumber ||
+				!this.address1 ||
+				!this.month ||
+				!this.year ||
+				!this.cvc2
 			)
+				this.feedback = "All required fields must be filled!"
+
+			if (this.feedback) {
+				console.log("Unsuccessful form validation!")
+				return
+			}
+
+			console.log("Successful form validation!")
+
+			try {
+				this.feedback = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+			} catch (err) {
+				this.feedback = err
+			}
+
+			console.log(this.feedback)
 		}
 	}
 }
@@ -186,14 +223,6 @@ export default {
 <style>
 label {
 	width: 100%;
-}
-.input-field label:not(.active):after {
-	font-size: 0.8rem;
-	-webkit-transform: translateY(-140%);
-	-moz-transform: translateY(-140%);
-	-ms-transform: translateY(-140%);
-	-o-transform: translateY(-140%);
-	transform: translateY(-140%);
 }
 
 .signup {
