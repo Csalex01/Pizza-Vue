@@ -87,7 +87,6 @@
 					<div class="row input-field col s12">
 						<input
 							type="text"
-							placeholder="0000 0000 0000 0000"
 							id="cardNumber"
 							v-model="cardNumber"
 							class="validate"
