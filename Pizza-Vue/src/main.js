@@ -8,6 +8,7 @@ import firebase from 'firebase'
 let app = null
 
 if (!app) {
+
   firebase.auth().onAuthStateChanged(user => {
     /* eslint-disable no-new */
     app = new Vue({
@@ -16,12 +17,13 @@ if (!app) {
       components: { App },
       template: '<App/>'
     })
+
+    $('.sidenav').sidenav();
+
   })
 }
 
 Vue.config.productionTip = false
 
-$(document).ready(function () {
-  $('.sidenav').sidenav();
-})
+
 
