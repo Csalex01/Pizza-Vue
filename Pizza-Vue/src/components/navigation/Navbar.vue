@@ -62,7 +62,6 @@ export default {
 	methods: {
 		async logout() {
 			const response = await firebase.auth().signOut()
-			console.log(response)
 		}
 	},
 	created() {

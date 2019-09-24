@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<input id="email" type="email" class="validate" v-model="email" required aria-required="true" />
-					<label for="email">E-mail</label>
+					<label for="email" class="req">E-mail</label>
 				</div>
 				<div class="input-field col s6">
 					<input
@@ -18,7 +18,7 @@
 						required
 						aria-required="true"
 					/>
-					<label for="password">Password</label>
+					<label for="password" class="req">Password</label>
 				</div>
 			</div>
 
@@ -32,7 +32,7 @@
 						required
 						aria-required="true"
 					/>
-					<label for="confirmPassword">Confirm Password</label>
+					<label for="confirmPassword" class="req">Confirm Password</label>
 				</div>
 			</div>
 
@@ -48,7 +48,7 @@
 							required
 							aria-required="true"
 						/>
-						<label for="firstName">Your first name</label>
+						<label for="firstName" class="req">Your first name</label>
 					</div>
 					<div class="row input-field col s12">
 						<input
@@ -59,7 +59,7 @@
 							required
 							aria-required="true"
 						/>
-						<label for="lastname">Your last name</label>
+						<label for="lastname" class="req">Your last name</label>
 					</div>
 					<div class="row input-field col s12">
 						<input type="text" id="company" v-model="company" class="validate" />
@@ -74,7 +74,7 @@
 							required
 							aria-required="true"
 						/>
-						<label for="address1">Address 1</label>
+						<label for="address1" class="req">Address 1</label>
 					</div>
 					<div class="row input-field col s12">
 						<input type="text" id="address2" v-model="address2" class="validate" />
@@ -93,7 +93,7 @@
 							required
 							aria-required="true"
 						/>
-						<label for="cardNumber">Your card number</label>
+						<label for="cardNumber" class="req">Your card number</label>
 					</div>
 					<div class="row col">
 						<div class="input-field col s6">
@@ -106,7 +106,7 @@
 								required
 								aria-required="true"
 							/>
-							<label for="month">Month</label>
+							<label for="month" class="req">Month</label>
 						</div>
 						<div class="input-field col s6">
 							<input
@@ -118,16 +118,19 @@
 								required
 								aria-required="true"
 							/>
-							<label for="year">Year</label>
+							<label for="year" class="req">Year</label>
 						</div>
 						<div class="row input-field col s12">
 							<input type="text" id="cvc2" v-model="cvc2" class="validate" required aria-required="true" />
-							<label for="cvc2">CVV2/CVC2</label>
+							<label for="cvc2" class="req">CVV2/CVC2</label>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row col sm12" v-if="feedback">
+			<div class="row col s12">
+				<p class="red-text right-align">* - required field</p>
+			</div>
+			<div class="row col s12" v-if="feedback">
 				<p class="red-text">Error: {{ feedback }}</p>
 			</div>
 			<div class="row col s12">
@@ -181,7 +184,7 @@ export default {
 			if (parseInt(this.month) < 1 || parseInt(this.month) > 12)
 				this.feedback = "Invalid month!"
 
-			if (parseInt(this.year) < 1 || parseInt(this.year) > 99)
+			if (parseInt(this.year) < 1 || parseInt(this.year) > 99 || parseInt(this.year) < (new Date()).getFullYear() % 100)
 				this.feedback = "Invalid year!"
 
 			if (parseInt(this.cvc2) < 100 || parseInt(this.cvc2) > 999)
@@ -219,10 +222,12 @@ export default {
 			try {
 				const response = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
 				const user = response.user
-				const slug = slugify(`${this.firstName} ${this.lastName}`, {
+
+				let slug = slugify(`${this.firstName} ${this.lastName}`, {
 					replacement: '-',
 					lower: true
 				})
+				slug = `${slug}-${Date.now() % 10000}`
 
 				const dbResponse = (
 					await db.collection("users").doc(slug).set({
@@ -260,5 +265,10 @@ label {
 
 .billing-payment-header {
 	margin: 15px 0;
+}
+
+.req::before {
+	color: red;
+	content: "* ";
 }
 </style>
