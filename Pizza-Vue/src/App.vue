@@ -7,7 +7,7 @@
 						🍕 Pizza
 						<span class="teal-text text-darken-1">
 							<img src="@/assets/images/logo.png" height="50px" />
-							<span style="margin-left: -35px ">ue</span>
+							<span style="margin-left: -20px ">ue</span>
 						</span> 🍕
 					</h2>
 				</div>
