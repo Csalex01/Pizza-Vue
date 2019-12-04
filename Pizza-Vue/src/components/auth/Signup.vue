@@ -131,7 +131,8 @@
 				<p class="red-text right-align">* - required field</p>
 			</div>
 			<div class="row col s12" v-if="feedback">
-				<p class="red-text">Error: {{ feedback }}</p>
+				<!-- <p class="red-text">Error: {{ feedback }}</p> -->
+				<Alert :status="this.status" :message="this.feedback"></Alert>
 			</div>
 			<div class="row col s12">
 				<button type="submit" class="btn" @click.prevent="signup">Signup</button>
@@ -145,6 +146,7 @@ import firebase from 'firebase'
 import db from '@/firebase/init'
 import validator from 'validator'
 import slugify from 'slugify'
+import Alert from '../feedback/Alert'
 
 export default {
 	name: "Signup",
@@ -162,33 +164,35 @@ export default {
 			month: null,
 			year: null,
 			cvc2: null,
-			feedback: null
+			feedback: null,
+			status: null
 		}
 	},
+	components: {Alert},
 	methods: {
 		validateForm() {
 			this.feedback = null
 
 			if (this.email && !validator.isEmail(this.email))
-				this.feedback = "E-mail incorrect!"
+				this.feedback = "Error: E-mail incorrect!"
 
 			if (!this.password /* && this.password.length < 6 */)
-				this.feedback = "Password length must be at least 6!"
+				this.feedback = "Error: Password length must be at least 6!"
 
 			if (this.password != this.confirmPassword)
-				this.feedback = "The passwords do not match!"
+				this.feedback = "Error: The passwords do not match!"
 
 			if (this.cardNumber && !validator.isCreditCard(this.cardNumber))
-				this.feedback = "Invalid card number, or try using an other card!"
+				this.feedback = "Error: Invalid card number, or try using an other card!"
 
 			if (parseInt(this.month) < 1 || parseInt(this.month) > 12)
-				this.feedback = "Invalid month!"
+				this.feedback = "Error: Invalid month!"
 
 			if (parseInt(this.year) < 1 || parseInt(this.year) > 99 || parseInt(this.year) < (new Date()).getFullYear() % 100)
-				this.feedback = "Invalid year!"
+				this.feedback = "Error: Invalid year!"
 
 			if (parseInt(this.cvc2) < 100 || parseInt(this.cvc2) > 999)
-				this.feedback = "Invalid CVV2/CVC2 number!"
+				this.feedback = "Error: Invalid CVV2/CVC2 number!"
 
 			if (
 				!this.email ||
@@ -202,10 +206,11 @@ export default {
 				!this.year ||
 				!this.cvc2
 			)
-				this.feedback = "All required fields must be filled!"
+				this.feedback = "Error: All required fields must be filled!"
 
 			if (this.feedback) {
 				console.log("Unsuccessful form validation!")
+				this.status = "failure"
 				return false
 			}
 

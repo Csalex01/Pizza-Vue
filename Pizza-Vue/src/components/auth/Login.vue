@@ -12,8 +12,8 @@
 				<input id="password" type="password" class="validate" v-model="password" />
 				<label for="password">Password</label>
 			</div>
-			<div class="row col sm12" v-if="feedback">
-				<p class="red-text left-align">Error: {{ feedback }}</p>
+			<div class="row col s12" v-if="feedback">
+				<Alert :status="this.status" :message="'Error: ' + this.feedback"></Alert>
 			</div>
 			<div class="row col s12">
 				<button type="submit" class="btn" @click.prevent="login">Login</button>
@@ -26,6 +26,7 @@
 import slugify from 'slugify'
 import validator from 'validator'
 import firebase from 'firebase'
+import Alert from '../feedback/Alert'
 
 export default {
 	name: "Login",
@@ -34,9 +35,11 @@ export default {
 			email: null,
 			password: null,
 			feedback: null,
-			isValid: false
+			isValid: false,
+			status: null
 		}
 	},
+	components: { Alert },
 	methods: {
 		validateForm() {
 			this.feedback = null
@@ -47,9 +50,9 @@ export default {
 			if (!this.email || !this.password)
 				this.feedback = "All required fields must be filled!"
 
-
 			if (this.feedback) {
 				console.log("Unsuccessful form validation!")
+				this.status = "failure"
 				return false
 			}
 
@@ -64,11 +67,11 @@ export default {
 			try {
 				await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
 
-				this.$router.push({ name: "Index" })
+				this.$router.push({ name: "Index"})
 			} catch (err) {
 				this.feedback = err.message
 			}
-		}
+		},
 	}
 }
 </script>

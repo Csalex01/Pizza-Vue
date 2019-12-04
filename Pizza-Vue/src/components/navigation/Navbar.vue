@@ -62,6 +62,7 @@ export default {
 	methods: {
 		async logout() {
 			const response = await firebase.auth().signOut()
+			this.$router.push({ name: "Index", props: {status: ""} })
 		}
 	},
 	created() {

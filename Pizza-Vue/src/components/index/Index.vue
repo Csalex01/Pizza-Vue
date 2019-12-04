@@ -5,8 +5,14 @@
 </template>
 
 <script>
-export default {
 
+export default {
+	name: "Index",
+	data() {
+		return {
+			status: "success",
+		}
+	}
 }
 </script>
 
