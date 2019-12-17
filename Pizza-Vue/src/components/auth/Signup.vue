@@ -174,25 +174,25 @@ export default {
 			this.feedback = null
 
 			if (this.email && !validator.isEmail(this.email))
-				this.feedback = "Error: E-mail incorrect!"
+				this.feedback = "Wawrning: E-mail incorrect!"
 
 			if (!this.password /* && this.password.length < 6 */)
-				this.feedback = "Error: Password length must be at least 6!"
+				this.feedback = "Wawrning: Password length must be at least 6!"
 
 			if (this.password != this.confirmPassword)
-				this.feedback = "Error: The passwords do not match!"
+				this.feedback = "Wawrning: The passwords do not match!"
 
 			if (this.cardNumber && !validator.isCreditCard(this.cardNumber))
-				this.feedback = "Error: Invalid card number, or try using an other card!"
+				this.feedback = "Wawrning: Invalid card number, or try using an other card!"
 
 			if (parseInt(this.month) < 1 || parseInt(this.month) > 12)
-				this.feedback = "Error: Invalid month!"
+				this.feedback = "Wawrning: Invalid month!"
 
 			if (parseInt(this.year) < 1 || parseInt(this.year) > 99 || parseInt(this.year) < (new Date()).getFullYear() % 100)
-				this.feedback = "Error: Invalid year!"
+				this.feedback = "Wawrning: Invalid year!"
 
 			if (parseInt(this.cvc2) < 100 || parseInt(this.cvc2) > 999)
-				this.feedback = "Error: Invalid CVV2/CVC2 number!"
+				this.feedback = "Wawrning: Invalid CVV2/CVC2 number!"
 
 			if (
 				!this.email ||
@@ -206,11 +206,11 @@ export default {
 				!this.year ||
 				!this.cvc2
 			)
-				this.feedback = "Error: All required fields must be filled!"
+				this.feedback = "Wawrning: All required fields must be filled!"
 
 			if (this.feedback) {
 				console.log("Unsuccessful form validation!")
-				this.status = "failure"
+				this.status = "warning"
 				return false
 			}
 
@@ -228,10 +228,13 @@ export default {
 				const response = await firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
 				const user = response.user
 
-				let slug = slugify(`${this.firstName} ${this.lastName}`, {
-					replacement: '-',
-					lower: true
-				})
+				let slug = slugify(`${this.firstName} ${this.lastName}`, 
+					{
+						replacement: '-',
+						lower: true
+					}
+				)	
+
 				slug = `${slug}-${Date.now() % 10000}`
 
 				const dbResponse = (
