@@ -61,14 +61,14 @@ export default {
   },
   methods: {
     async logout() {
-      const response = await firebase.auth().signOut();
-      this.$router.push({ name: "Index", props: { status: "" } });
+      const response = await firebase.auth().signOut()
+      this.$router.push({ name: "Index", props: { status: "" } })
     }
   },
   created() {
     firebase
       .auth()
-      .onAuthStateChanged(user => (this.loggedIn = user ? true : false));
+      .onAuthStateChanged(user => (this.loggedIn = user ? true : false))
   }
 };
 </script>

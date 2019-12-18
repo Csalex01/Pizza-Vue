@@ -1,67 +1,65 @@
 <template>
-    <div v-if="status" v-bind:class="status" class="alert">
-        <p class="alertText">{{ message }}</p>
-    </div>
+  <div v-if="status" v-bind:class="status" class="alert">
+    <p class="alertText">{{ setMessage() }}</p>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "Alert",
-    data() {
-        return {
-        }
-    },
-    props: {
-        status,
-        message: null
-    },
-    methods: {
-        failure() {
-            return "An error occured while logging you in."
-        },
-        setMessage(status) {
-            switch(status) {
-                case "success":
-                    return "Successful login!"
-                case "failure":
-                    return "An error occured while logging you in."
-                case "warning":
-                    return "Something happened while logging you in."
-                default:
-                    return "Uncaught error."
-            }
-        }
+  name: "Alert",
+  data() {
+    return {};
+  },
+  props: {
+    status,
+    message: null,
+    feedback: null
+  },
+  methods: {
+    setMessage() {
+      switch (status) {
+        case "warning":
+          this.feedback = "Warning: " + this.message;
+          break;
+        case "failure":
+          this.feedback = "Error: " + this.message;
+          break;
+        default:
+          this.feedback = this.message;
+      }
+
+      return this.feedback;
     }
-}
+  }
+};
 </script>
 
 <style>
-
 .alert {
-    background: #ACECE6;
-    color: #155724;
-    border-radius: 5px;
-    padding: 5;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: auto    ;
+  background: #acece6;
+  color: #155724;
+  border-radius: 5px;
+  padding: 5;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: auto;
 }
 
 .success {
-    background: #D4EDDA;
-    border: 1px solid #1557245b;
-    color: #155724;
+  background: #d4edda;
+  border: 1px solid #1557245b;
+  color: #155724;
 }
 
 .failure {
-    background: #F8D7DA;
-    border: 1px solid #721C245b;
-    color: #721C24;
-}   
+  background: #f8d7da;
+  border: 1px solid #721c245b;
+  color: #721c24;
+}
 
 .warning {
-    background: #FFF3CD;
-    border: 1px solid #8564045b;
-    color: #856404;
-} 
+  background: #fff3cd;
+  border: 1px solid #8564045b;
+  color: #856404;
+}
 </style>
