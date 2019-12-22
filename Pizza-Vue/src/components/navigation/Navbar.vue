@@ -82,7 +82,7 @@ export default {
 
 li > a:focus {
   box-shadow: none;
-  border: none;
+  border: none; 
   outline: none;
 }
 </style>

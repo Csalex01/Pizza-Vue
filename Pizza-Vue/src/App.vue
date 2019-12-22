@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="center container">
+      <!-- This part makes the 🍕PizzaVue🍕 loog possible -->
       <div class="iris hide-on-small-only">
         <div class="card transparent z-depth-0">
           <h2 class="title">
@@ -13,6 +14,10 @@
         </div>
       </div>
 
+      <!--
+         Displays the Navbar component
+        (Components are specified in: src/components/subfolder/ComponentName.vue)
+      -->
       <Navbar />
 
       <router-view class="content" />

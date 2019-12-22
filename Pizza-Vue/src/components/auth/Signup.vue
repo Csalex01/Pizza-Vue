@@ -228,7 +228,7 @@ export default {
 
       if (this.feedback) {
         console.log("Unsuccessful form validation!")
-        this.status = "warning"
+        this.status = "failure"
         return false
       }
 

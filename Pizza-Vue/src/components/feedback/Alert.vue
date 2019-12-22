@@ -8,16 +8,19 @@
 export default {
   name: "Alert",
   data() {
-    return {};
+    return {
+      feedback: null
+    };
   },
   props: {
     status,
-    message: null,
-    feedback: null
+    message: null
   },
   methods: {
     setMessage() {
-      switch (status) {
+      this.message = this.message.replace("Error:", "").replace("Warning:", "")
+
+      switch (this.status) {
         case "warning":
           this.feedback = "Warning: " + this.message;
           break;
