@@ -1,5 +1,5 @@
 <template>
-  <div class="col s12 m4">
+  <div class="col s12 m3">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
         <img src="../../assets/images/pizza_diavolo.jpg" alt class="activator" />
@@ -60,24 +60,24 @@ img {
 }
 
 hr {
-  color: rgba(51, 51, 51, 0.2);
-  background-color: black;
+  color: transparent;
+  background-color: rgba(100, 100, 100, 0.5);
   max-width: 75%;
   border-radius: 100%;
 }
 
 .name {
   display: inline-block;
-  font-size: 30px;
+  font-size: 20;
 }
 
 .description {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .price {
   display: block;
-  font-size: 18px;
+  font-size: 13px;
 }
 
 ul > .topping {
@@ -85,7 +85,7 @@ ul > .topping {
 }
 
 .topping {
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 0px;
 }
 
