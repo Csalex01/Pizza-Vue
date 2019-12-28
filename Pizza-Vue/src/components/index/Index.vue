@@ -1,17 +1,12 @@
 <template>
   <div class="index">
-    <h1 class>INDEX</h1>
-    <Card></Card>
+    <h2 class="teal-text darken-4">Home</h2>
   </div>
 </template>
 
 <script>
-
-import Card from "@/components/index/Card"
-
 export default {
   name: "Index",
-  components: { Card },
   data() {
     return {
     }

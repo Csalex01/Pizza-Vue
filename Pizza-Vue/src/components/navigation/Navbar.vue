@@ -10,7 +10,7 @@
             <router-link :to="{ name: 'Index' }">Home</router-link>
           </li>
           <li class="left">
-            <a href="#">Order</a>
+            <router-link :to="{ name: 'Order' }">Order</router-link>
           </li>
           <div v-if="!loggedIn">
             <li class="right">
@@ -82,7 +82,7 @@ export default {
 
 li > a:focus {
   box-shadow: none;
-  border: none; 
+  border: none;
   outline: none;
 }
 </style>
