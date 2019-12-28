@@ -26,7 +26,7 @@ export default {
     }
   },
   async beforeCreate() {
-    await db.collection("pizzas").where("name", ">", "").get()
+    await db.collection("pizzas").get()
       .then((snapshot) => {
         snapshot.forEach((doc) => {
           this.pizzas.push({
