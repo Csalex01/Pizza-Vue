@@ -9,10 +9,11 @@
           <span class="text-darken-4 m-4 red-text name">{{ this.name }}</span>
           <i class="material-icons right">more_vert</i>
           <span class="green-text text-darken-2 price">{{ `${this.price} €` }}</span>
-          <span class="note">(Click for details)</span>
+          <span class="note activator">(Click for details)</span>
         </span>
       </div>
       <div class="card-action">
+        <a href="#" class="btn activator waves-effect waves-light">Details</a>
         <a href="#" class="btn waves-effect waves-light">Order</a>
       </div>
       <div class="card-reveal">
@@ -80,13 +81,9 @@ hr {
   font-size: 13px;
 }
 
-ul > .topping {
-  margin: 0px;
-}
-
 .topping {
   font-size: 15px;
-  margin-top: 0px;
+  padding: 0px;
 }
 
 .note {
