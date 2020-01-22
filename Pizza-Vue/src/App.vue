@@ -9,7 +9,8 @@
             <span class="teal-text text-darken-1">
               <img src="@/assets/images/logo.png" height="50px" />
               <span style="margin-left: -20px ">ue</span>
-            </span> 🍕
+            </span>
+            🍕
           </h2>
         </div>
       </div>
@@ -22,7 +23,7 @@
 
       <router-view class="content" />
 
-      <Footer />
+      <Footer class="footer" />
     </div>
   </div>
 </template>
@@ -44,6 +45,10 @@ body {
   background-color: whitesmoke;
 }
 
+.content {
+  min-height: 512px;
+}
+
 .iris {
   width: 100%;
   background-image: url("assets/images/header.jpg");
@@ -62,12 +67,5 @@ body {
 
 #app {
   font-family: "Inconsolata", Helvetica, Arial, sans-serif;
-  /* background: url("https://www.pizzahut.ro/assets/images/bk.jpg") repeat center top; */
-  /* background: red; */
-  /* /* background: -webkit-linear-gradient(to bottom right, red, yellow); */
-  /* background: -moz-linear-gradient(to bottom right, red, yellow); */
-  /* background: -moz-linear-gradient(to bottom right,
-        rgba(255, 255, 255, 1),
-        rgba(230, 230, 230, 1)) repeat center top; */
 }
 </style>
