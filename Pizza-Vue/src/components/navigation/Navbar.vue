@@ -12,6 +12,7 @@
           <li class="left">
             <router-link :to="{ name: 'Order' }">Order</router-link>
           </li>
+
           <div v-if="!loggedIn">
             <li class="right">
               <router-link :to="{ name: 'Signup' }" class="btn waves-effect waves-light">Signup</router-link>
@@ -24,6 +25,9 @@
             <li class="right">
               <a @click="logout">Logut</a>
             </li>
+            <!-- <li class="right">
+              <router-link :to="{ name: 'Home' }" class="waves-effect waves-light">Profile</router-link>
+            </li>-->
           </div>
         </ul>
       </div>

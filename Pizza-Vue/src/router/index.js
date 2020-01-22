@@ -35,7 +35,7 @@ export default new Router({
       component: Order
     },
     {
-      path: "/custom_order",
+      path: "/order/custom",
       name: "Custom_Order",
       component: Custom_Order
     }

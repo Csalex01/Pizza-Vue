@@ -1,6 +1,6 @@
 <template>
   <div class="col s12 m3">
-    <div class="card">
+    <div class="card pizza-card">
       <div class="card-image waves-effect waves-block waves-light">
         <img :src="img_url" alt class="activator" />
       </div>
@@ -64,7 +64,7 @@ hr {
   border-radius: 100%;
 }
 
-.card {
+.pizza-card {
   min-height: 450px;
 }
 
