@@ -18,7 +18,7 @@
               class="s12 offset-m3 m6"
             />
 
-            <div class="row col s12 topping">
+            <div class="row col s12">
               <p v-for="pizza in available_pizzas" :key="pizza.id">
                 <label :for="pizza.id">
                   <input
@@ -40,7 +40,7 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Toppings</h4>
-            <div class="row col s12 topping">
+            <div class="row col s12">
               <p v-for="topping in available_toppings" :key="topping.id">
                 <label :for="topping.id">
                   <input
@@ -60,7 +60,7 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Countertops</h4>
-            <div class="row col s12 topping">
+            <div class="row col s12">
               <p v-for="countertop in available_countertops" :key="countertop.id">
                 <label :for="countertop.id">
                   <input
@@ -80,7 +80,7 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Size</h4>
-            <div class="row col s12 topping">
+            <div class="row col s12">
               <p>
                 <label for="small">
                   <input
@@ -126,7 +126,7 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Drinks</h4>
-            <div class="row col s12 topping">
+            <div class="row col s12">
               <p v-for="drink in available_drinks" :key="drink.id">
                 <label :for="drink.id">
                   <input
@@ -216,17 +216,22 @@ export default {
   },
   async beforeUpdate() {
     let index = this.available_pizzas.findIndex(el => el.id == this.checked_pizza)
+
+    if (index == -1)
+      return
+
     this.pizza.description = this.available_pizzas[index].data.description
     this.pizza.img_url = this.available_pizzas[index].data.img_url
     this.pizza.name = this.available_pizzas[index].data.name
     this.pizza.price = this.available_pizzas[index].data.price
     this.pizza.toppings = this.available_pizzas[index].data.toppings
+
   }
 }
 </script>
 
 <style>
-.topping > p {
+div > p {
   display: inline-block;
   margin: 10px 25px 0 0;
 }
