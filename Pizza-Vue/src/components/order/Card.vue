@@ -64,6 +64,10 @@ hr {
   border-radius: 100%;
 }
 
+.card {
+  min-height: 450px;
+}
+
 .card-action > a {
   margin: 10px 0 0 0;
 }
