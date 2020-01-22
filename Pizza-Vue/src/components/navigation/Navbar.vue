@@ -35,13 +35,13 @@
         <router-link :to="{ name: 'Index' }">Home</router-link>
       </li>
       <li>
-        <a href="#">Order</a>
+        <router-link :to="{ name: 'Order' }">Order</router-link>
       </li>
       <li>
         <router-link :to="{ name: 'Signup' }" class="waves-effect waves-light">Signup</router-link>
       </li>
       <li>
-        <a href="#">Logut</a>
+        <a @click="logout">Logut</a>
       </li>
       <li>
         <router-link :to="{ name: 'Login' }" class="waves-effect waves-light">Login</router-link>
