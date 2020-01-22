@@ -29,7 +29,7 @@ export default {
       pizzas: []
     };
   },
-  async beforeCreate() {
+  async beforeMount() {
     await db
       .collection("pizzas")
       .get()

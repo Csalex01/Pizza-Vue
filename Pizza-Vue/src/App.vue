@@ -41,6 +41,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css?family=B612:400,700&display=swap");
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   background-color: whitesmoke;
 }

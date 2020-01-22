@@ -70,8 +70,8 @@ export default {
       this.$router.push({ name: "Index", props: { status: "" } })
     }
   },
-  created() {
-    firebase
+  async beforeMount() {
+    await firebase
       .auth()
       .onAuthStateChanged(user => (this.loggedIn = user ? true : false))
   }

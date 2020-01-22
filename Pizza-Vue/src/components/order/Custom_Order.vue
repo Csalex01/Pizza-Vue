@@ -8,12 +8,12 @@
           <div class="col s12">
             <h4 class="teal-text darken-4">Pizza</h4>
             <div class="row col s12 topping">
-              <p v-for="pizza in pizzas" :key="pizza.id">
+              <p v-for="pizza in available_pizzas" :key="pizza.id">
                 <label :for="pizza.id">
                   <input
                     type="radio"
                     :id="pizza.id"
-                    v-model="checkedPizza"
+                    v-model="checked_pizza"
                     class="filled-in"
                     :value="pizza.id"
                   />
@@ -35,7 +35,7 @@
                   <input
                     type="checkbox"
                     :id="topping.id"
-                    v-model="checkedToppings"
+                    v-model="checked_toppings"
                     class="filled-in"
                     :value="topping.id"
                   />
@@ -55,7 +55,7 @@
                   <input
                     type="radio"
                     :id="countertop.id"
-                    v-model="checkedCountertop"
+                    v-model="checked_countertops"
                     class="filled-in"
                     :value="countertop.id"
                   />
@@ -65,6 +65,30 @@
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col s12">
+            <h4 class="teal-text darken-4">Drinks</h4>
+            <div class="row col s12 topping">
+              <p v-for="drink in available_drinks" :key="drink.id">
+                <label :for="drink.id">
+                  <input
+                    type="radio"
+                    :id="drink.id"
+                    v-model="checked_drink"
+                    class="filled-in"
+                    :value="drink.id"
+                  />
+                  <span>{{ drink.data.name }}</span>
+                </label>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row col s12">
+        <button type="submit" class="btn" @click.prevent>Submit</button>
       </div>
     </form>
   </div>
@@ -80,52 +104,51 @@ export default {
     return {
       available_toppings: [],
       available_countertops: [],
-      checkedToppings: [],
-      checkedPizza: [],
-      pizzas: [],
-      checkedCountertop: null
+      available_drinks: [],
+      checked_toppings: [],
+      checked_pizza: null,
+      checked_countertops: null,
+      checked_drink: null,
+      available_pizzas: []
     }
   },
-  methods: {},
-  async beforeCreate() {
-    await db
-      .collection("pizzas")
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          this.pizzas.push({
-            id: doc.id,
-            data: doc.data()
+  methods: {
+    async getCollection(options) {
+      await db
+        .collection(options.name)
+        .get()
+        .then(snapshot => {
+          snapshot.forEach(doc => {
+            options.array.push({
+              id: doc.id,
+              data: doc.data()
+            })
           })
         })
-      })
-      .catch(err => console.error(err))
+        .catch(err => console.error(err))
+      console.log(options.array)
+    }
+  },
+  async beforeMount() {
+    await this.getCollection({
+      name: "pizzas",
+      array: this.available_pizzas
+    })
 
-    await db
-      .collection("available_toppings")
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          this.available_toppings.push({
-            id: doc.id,
-            data: doc.data()
-          })
-        })
-      })
-      .catch(err => console.error(err))
+    await this.getCollection({
+      name: "available_toppings",
+      array: this.available_toppings
+    })
 
-    await db
-      .collection("available_countertops")
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          this.available_countertops.push({
-            id: doc.id,
-            data: doc.data()
-          })
-        })
-      })
-      .catch(err => console.error(err))
+    await this.getCollection({
+      name: "available_countertops",
+      array: this.available_countertops
+    })
+
+    await this.getCollection({
+      name: "available_drinks",
+      array: this.available_drinks
+    })
   }
 }
 </script>
