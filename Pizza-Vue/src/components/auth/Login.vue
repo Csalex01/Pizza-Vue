@@ -1,9 +1,9 @@
 <template>
   <div class="login row">
+    <div class="row">
+      <h2 class="teal-text darken-4">Login</h2>
+    </div>
     <form class="col s12">
-      <div class="row">
-        <h2 class="teal-text darken-4">Login</h2>
-      </div>
       <div class="row input-field col s12">
         <input id="email" type="email" class="validate" v-model="email" />
         <label for="email">E-mail</label>
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import slugify from 'slugify'
-import validator from 'validator'
-import firebase from 'firebase'
-import Alert from '../feedback/Alert'
+import slugify from "slugify";
+import validator from "validator";
+import firebase from "firebase";
+import Alert from "../feedback/Alert";
 
 export default {
   name: "Login",
@@ -37,7 +37,7 @@ export default {
       feedback: null,
       isValid: false,
       status: null
-    }
+    };
   },
   components: { Alert },
   methods: {
@@ -53,25 +53,26 @@ export default {
       if (this.feedback) {
         console.log("Unsuccessful form validation!")
         this.status = "failure"
-        return false
+        return false;
       }
 
-      return true
+      return true;
     },
     async login() {
       const isValid = this.validateForm()
 
-      if (!isValid)
-        return
+      if (!isValid) return;
 
       try {
-        await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        await firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password)
 
         this.$router.push({ name: "Index" })
       } catch (err) {
         this.feedback = err.message
       }
-    },
+    }
   }
 }
 </script>

@@ -41,9 +41,7 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=B612:400,700&display=swap");
 
 body {
-  /* background: url("https://www.pizzahut.ro/assets/images/bk.jpg") repeat center
-		top; */
-  background: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .iris {
@@ -64,5 +62,12 @@ body {
 
 #app {
   font-family: "Inconsolata", Helvetica, Arial, sans-serif;
+  /* background: url("https://www.pizzahut.ro/assets/images/bk.jpg") repeat center top; */
+  /* background: red; */
+  /* /* background: -webkit-linear-gradient(to bottom right, red, yellow); */
+  /* background: -moz-linear-gradient(to bottom right, red, yellow); */
+  /* background: -moz-linear-gradient(to bottom right,
+        rgba(255, 255, 255, 1),
+        rgba(230, 230, 230, 1)) repeat center top; */
 }
 </style>

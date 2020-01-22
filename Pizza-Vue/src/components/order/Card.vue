@@ -2,14 +2,13 @@
   <div class="col s12 m3">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
-        <img src="../../assets/images/pizza_diavolo.jpg" alt class="activator" />
+        <img :src="img_url" alt class="activator" />
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">
           <span class="text-darken-4 m-4 red-text name">{{ this.name }}</span>
           <i class="material-icons right">more_vert</i>
           <span class="green-text text-darken-2 price">{{ `${this.price} €` }}</span>
-          <span class="note activator">(Click for details)</span>
         </span>
       </div>
       <div class="card-action">
@@ -42,15 +41,13 @@ export default {
     name: null,
     description: null,
     price: null,
-    toppings: null
+    toppings: null,
+    img_url: null
   },
   data() {
-    return {
-    }
+    return {}
   },
-  methods: {
-
-  }
+  methods: {}
 }
 </script>
 
@@ -65,6 +62,10 @@ hr {
   background-color: rgba(100, 100, 100, 0.5);
   max-width: 75%;
   border-radius: 100%;
+}
+
+.card-action > a {
+  margin: 10px 0 0 0;
 }
 
 .name {

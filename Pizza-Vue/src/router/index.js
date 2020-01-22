@@ -7,6 +7,7 @@ import Login from '@/components/auth/Login'
 import Signup from '@/components/auth/Signup'
 
 import Order from '@/components/order/Order'
+import Custom_Order from '@/components/order/Custom_Order'
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path: "/order",
       name: "Order",
       component: Order
+    },
+    {
+      path: "/custom_order",
+      name: "Custom_Order",
+      component: Custom_Order
     }
   ]
 })

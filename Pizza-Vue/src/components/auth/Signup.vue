@@ -1,9 +1,9 @@
 <template>
   <div class="signup row">
+    <div class="row">
+      <h2 class="teal-text darken-4">Signup</h2>
+    </div>
     <form class="col s12">
-      <div class="row">
-        <h2 class="teal-text darken-4">Signup</h2>
-      </div>
       <div class="row">
         <div class="input-field col s6">
           <input
@@ -156,11 +156,11 @@
 </template>
 
 <script>
-import firebase from "firebase"
-import db from "@/firebase/init"
-import validator from "validator"
-import slugify from "slugify"
-import Alert from "../feedback/Alert"
+import firebase from "firebase";
+import db from "@/firebase/init";
+import validator from "validator";
+import slugify from "slugify";
+import Alert from "../feedback/Alert";
 
 export default {
   name: "Signup",
@@ -185,7 +185,7 @@ export default {
   components: { Alert },
   methods: {
     validateForm() {
-      this.feedback = null
+      this.feedback = null;
 
       if (this.email && !validator.isEmail(this.email))
         this.feedback = "E-mail incorrect!"
@@ -229,22 +229,22 @@ export default {
       if (this.feedback) {
         console.log("Unsuccessful form validation!")
         this.status = "failure"
-        return false
+        return false;
       }
 
       console.log("Successful form validation!")
-      return true
+      return true;
     },
     async signup() {
-      const isValid = this.validateForm()
+      const isValid = this.validateForm();
 
       if (!isValid) return
 
       try {
         const response = await firebase
           .auth()
-          .createUserWithEmailAndPassword(this.email, this.password)
-        const user = response.user
+          .createUserWithEmailAndPassword(this.email, this.password);
+        const user = response.user;
 
         let slug = slugify(`${this.firstName} ${this.lastName}`, {
           replacement: "-",
@@ -267,7 +267,7 @@ export default {
             address1: this.address1,
             address2: this.address2,
             uid: user.uid
-          })
+          });
 
         this.$router.push({ name: "Index" })
       } catch (err) {

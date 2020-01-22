@@ -14,16 +14,15 @@ if (!app) {
     app = new Vue({
       el: '#app',
       router,
-      components: { App },
+      components: {
+        App
+      },
       template: '<App/>'
     })
 
-    $('.sidenav').sidenav();
+    $('.sidenav').sidenav()
 
   })
 }
 
 Vue.config.productionTip = false
-
-
-

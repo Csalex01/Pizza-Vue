@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       feedback: null
-    };
+    }
   },
   props: {
     status,
@@ -22,19 +22,19 @@ export default {
 
       switch (this.status) {
         case "warning":
-          this.feedback = "Warning: " + this.message;
+          this.feedback = "Warning: " + this.message
           break;
         case "failure":
-          this.feedback = "Error: " + this.message;
+          this.feedback = "Error: " + this.message
           break;
         default:
-          this.feedback = this.message;
+          this.feedback = this.message
       }
 
-      return this.feedback;
+      return this.feedback
     }
   }
-};
+}
 </script>
 
 <style>
