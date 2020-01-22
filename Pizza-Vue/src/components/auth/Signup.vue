@@ -227,12 +227,12 @@ export default {
         this.feedback = "All required fields must be filled!"
 
       if (this.feedback) {
-        console.log("Unsuccessful form validation!")
+        // console.log("Unsuccessful form validation!")
         this.status = "failure"
         return false;
       }
 
-      console.log("Successful form validation!")
+      // console.log("Successful form validation!")
       return true;
     },
     async signup() {

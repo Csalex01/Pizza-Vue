@@ -50,10 +50,7 @@
           <div class="col s12">
             <h4 class="teal-text darken-4">Countertops</h4>
             <div class="row col s12 topping">
-              <p
-                v-for="countertop in available_countertops"
-                :key="countertop.id"
-              >
+              <p v-for="countertop in available_countertops" :key="countertop.id">
                 <label :for="countertop.id">
                   <input
                     type="radio"
@@ -70,11 +67,6 @@
         </div>
       </div>
     </form>
-    Checked Toppings: {{ checkedToppings }}
-    <br />
-    Checked Countertop: {{ checkedCountertop }}
-    <br />
-    Checked Pizza: {{ checkedPizza }}
   </div>
 </template>
 
