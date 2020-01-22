@@ -42,7 +42,7 @@ export default {
     description: null,
     price: null,
     toppings: null,
-    img_url: null
+    img_url: null,
   },
   data() {
     return {}

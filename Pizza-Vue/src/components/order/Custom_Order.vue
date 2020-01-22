@@ -7,6 +7,17 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Pizza</h4>
+
+            <Card
+              v-if="pizza.name != null"
+              :name="pizza.name"
+              :description="pizza.description"
+              :price="pizza.price"
+              :toppings="pizza.toppings"
+              :img_url="pizza.img_url"
+              class="s12 offset-m3 m6"
+            />
+
             <div class="row col s12 topping">
               <p v-for="pizza in available_pizzas" :key="pizza.id">
                 <label :for="pizza.id">
@@ -68,6 +79,52 @@
 
         <div class="row">
           <div class="col s12">
+            <h4 class="teal-text darken-4">Size</h4>
+            <div class="row col s12 topping">
+              <p>
+                <label for="small">
+                  <input
+                    type="radio"
+                    id="small"
+                    :v-model="checked_size"
+                    class="filled-in"
+                    value="small"
+                  />
+                  <span>Small</span>
+                </label>
+              </p>
+
+              <p>
+                <label for="medium">
+                  <input
+                    type="radio"
+                    id="medium"
+                    :v-model="checked_size"
+                    class="filled-in"
+                    value="medium"
+                  />
+                  <span>Medium</span>
+                </label>
+              </p>
+
+              <p>
+                <label for="large">
+                  <input
+                    type="radio"
+                    id="large"
+                    :v-model="checked_size"
+                    class="filled-in"
+                    value="large"
+                  />
+                  <span>Large</span>
+                </label>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
             <h4 class="teal-text darken-4">Drinks</h4>
             <div class="row col s12 topping">
               <p v-for="drink in available_drinks" :key="drink.id">
@@ -98,18 +155,23 @@
 import firebase from "firebase"
 import db from "@/firebase/init"
 
+import Card from "@/components/order/Card"
+
 export default {
   name: "Custom_Order",
+  components: { Card },
   data() {
     return {
       available_toppings: [],
       available_countertops: [],
       available_drinks: [],
+      available_pizzas: [],
       checked_toppings: [],
       checked_pizza: null,
       checked_countertops: null,
       checked_drink: null,
-      available_pizzas: []
+      checked_size: null,
+      pizza: {}
     }
   },
   methods: {
@@ -126,7 +188,6 @@ export default {
           })
         })
         .catch(err => console.error(err))
-      console.log(options.array)
     }
   },
   async beforeMount() {
@@ -149,6 +210,14 @@ export default {
       name: "available_drinks",
       array: this.available_drinks
     })
+  },
+  async beforeUpdate() {
+    let index = this.available_pizzas.findIndex(el => el.id == this.checked_pizza)
+    this.pizza.description = this.available_pizzas[index].data.description
+    this.pizza.img_url = this.available_pizzas[index].data.img_url
+    this.pizza.name = this.available_pizzas[index].data.name
+    this.pizza.price = this.available_pizzas[index].data.price
+    this.pizza.toppings = this.available_pizzas[index].data.toppings
   }
 }
 </script>

@@ -11,15 +11,16 @@
         :price="pizza.data.price"
         :toppings="pizza.data.toppings"
         :img_url="pizza.data.img_url"
+        class="m3"
       />
     </div>
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
-import db from "@/firebase/init";
-import Card from "@/components/order/Card";
+import firebase from "firebase"
+import db from "@/firebase/init"
+import Card from "@/components/order/Card"
 
 export default {
   name: "Order",
