@@ -210,6 +210,9 @@ export default {
       name: "available_drinks",
       array: this.available_drinks
     })
+
+
+    this.checked_pizza = this.available_pizzas[0].id
   },
   async beforeUpdate() {
     let index = this.available_pizzas.findIndex(el => el.id == this.checked_pizza)
