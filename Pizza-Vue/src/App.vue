@@ -47,6 +47,7 @@ html {
 
 body {
   background-color: whitesmoke;
+  /* background-image: -moz-linear-gradient(to bottom left, red, yellow) ; */
 }
 
 .content {

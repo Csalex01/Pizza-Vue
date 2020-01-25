@@ -25,9 +25,9 @@
             <li class="right">
               <a @click="logout">Logut</a>
             </li>
-            <!-- <li class="right">
+            <li class="right">
               <router-link :to="{ name: 'Home' }" class="waves-effect waves-light">Profile</router-link>
-            </li>-->
+            </li>
           </div>
         </ul>
       </div>
@@ -61,7 +61,8 @@ export default {
   name: "Navbar",
   data() {
     return {
-      loggedIn: false
+      loggedIn: false,
+      isFixed: false
     };
   },
   methods: {
@@ -74,6 +75,9 @@ export default {
     await firebase
       .auth()
       .onAuthStateChanged(user => (this.loggedIn = user ? true : false))
+  },
+  mounted() {
+
   }
 };
 </script>

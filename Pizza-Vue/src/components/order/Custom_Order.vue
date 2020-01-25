@@ -155,7 +155,7 @@
 import firebase from "firebase"
 import db from "@/firebase/init"
 
-import Card from "@/components/order/Card"
+import Card from "@/components/display/Card"
 
 export default {
   name: "Custom_Order",

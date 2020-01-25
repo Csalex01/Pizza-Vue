@@ -5,12 +5,30 @@ import App from './App'
 import router from './router'
 import firebase from 'firebase'
 
-let app = null
 
-if (!app) {
+// if (!app) {
 
-  firebase.auth().onAuthStateChanged(user => {
-    /* eslint-disable no-new */
+//   firebase.auth().onAuthStateChanged(user => {
+//     /* eslint-disable no-new */
+//     app = new Vue({
+//       el: '#app',
+//       router,
+//       components: {
+//         App
+//       },
+//       template: '<App/>'
+//     })
+
+//   })
+
+//   $('.sidenav').sidenav()
+// }
+
+$(document).ready(() => {
+
+  let app = null
+
+  if (!app) {
     app = new Vue({
       el: '#app',
       router,
@@ -21,8 +39,7 @@ if (!app) {
     })
 
     $('.sidenav').sidenav()
+  }
 
-  })
-}
-
-Vue.config.productionTip = false
+  Vue.config.productionTip = false
+})

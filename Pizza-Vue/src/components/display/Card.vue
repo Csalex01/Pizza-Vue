@@ -2,7 +2,7 @@
   <div class="col s12 m3">
     <div class="card pizza-card">
       <div class="card-image waves-effect waves-block waves-light">
-        <img :src="img_url" alt class="activator" />
+        <img :src="img_url" class="activator" />
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">
