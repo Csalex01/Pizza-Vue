@@ -255,7 +255,7 @@ export default {
 
         const dbResponse = await db
           .collection("users")
-          .doc(slug)
+          .doc(user.uid)
           .set({
             firstName: this.firstName,
             lastName: this.lastName,
@@ -268,7 +268,6 @@ export default {
             address2: this.address2,
             uid: user.uid
           });
-
         this.$router.push({ name: "Index" })
       } catch (err) {
         this.feedback = err

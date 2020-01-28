@@ -26,7 +26,7 @@
               <a @click="logout">Logut</a>
             </li>
             <li class="right">
-              <router-link :to="{ name: 'Home' }" class="waves-effect waves-light">Profile</router-link>
+              <router-link :to="{ name: 'Index' }" class="waves-effect waves-light">Profile</router-link>
             </li>
           </div>
         </ul>
@@ -68,7 +68,7 @@ export default {
   methods: {
     async logout() {
       const response = await firebase.auth().signOut()
-      this.$router.push({ name: "Index", props: { status: "" } })
+      this.$router.push({ name: "Index" })
     }
   },
   async beforeMount() {
