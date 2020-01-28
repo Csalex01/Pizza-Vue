@@ -23,6 +23,8 @@ A weboldal vázát a HTML nyelv biztosítja. A forráskódban viszont nem sima H
 #### Materialize keretrendszer
 Sokféle könyvtár illetve keretrendszer létezik CSS-hez, mint például a Bootstrap, a mi esetünkben pedig a Materialize. Azért választottam ezt a keretrendszert, mert könnyű és érthető a szintaxisa és hatékonyan kezeli a reszponzív elemeket. Különböző méretű kijelzőkön az elemeknek képesek vagyunk adni egy adaptív tulajdonságot, ami a kijelző méretétől függően képes megváltoztatni az adott elem kinézetét és funkcionalitását, a rácshoz igazított tervezésnek köszönhetően (ú.n. grid system).
 
+Böngészők közötti optimalizáció miatt nem kell, hogy aggódjunk, ugyanis ez a keretrendszer minden a mai napokban használt böngészőre található optimalizáció, ezért minden egyes böngészőben (a böngésző sajátosságait kivéve, mint például a görgetősáv vagy a csúszka) ugyan abban az élményben fogunk részesülni, így el tudjuk kerülni a böngészők-közötti következetlenséget.
+
 ## Backend (hátsó vége)
 
 ### JavaScript
