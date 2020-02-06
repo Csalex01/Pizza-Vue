@@ -156,11 +156,13 @@
 </template>
 
 <script>
-import firebase from "firebase";
-import db from "@/firebase/init";
-import validator from "validator";
-import slugify from "slugify";
-import Alert from "../feedback/Alert";
+import firebase from "firebase"
+import db from "@/firebase/init"
+
+import validator from "validator"
+import slugify from "slugify"
+
+import Alert from "../feedback/Alert"
 
 export default {
   name: "Signup",

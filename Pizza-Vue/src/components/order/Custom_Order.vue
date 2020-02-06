@@ -86,7 +86,7 @@
                   <input
                     type="radio"
                     id="small"
-                    :v-model="checked_size"
+                    v-model="checked_size"
                     class="filled-in"
                     value="small"
                   />
@@ -99,7 +99,7 @@
                   <input
                     type="radio"
                     id="medium"
-                    :v-model="checked_size"
+                    v-model="checked_size"
                     class="filled-in"
                     value="medium"
                   />
@@ -112,7 +112,7 @@
                   <input
                     type="radio"
                     id="large"
-                    :v-model="checked_size"
+                    v-model="checked_size"
                     class="filled-in"
                     value="large"
                   />
@@ -144,8 +144,19 @@
         </div>
       </div>
 
+      <div v-if="feedback" class="row col s12">
+        <Alert :status="this.status" :message="this.feedback"></Alert>
+      </div>
+
       <div class="row col s12">
-        <button type="submit" class="btn" @click.prevent>Submit</button>
+        <button type="submit" class="btn" @click.prevent="submitOrder">
+          Submit
+          <i class="material-icons right">done</i>
+        </button>
+        <button class="btn" @click.prevent="resetOrder">
+          Reset
+          <i class="material-icons right">cached</i>
+        </button>
       </div>
     </form>
   </div>
@@ -156,10 +167,11 @@ import firebase from "firebase"
 import db from "@/firebase/init"
 
 import Card from "@/components/display/Card"
+import Alert from "../feedback/Alert"
 
 export default {
   name: "Custom_Order",
-  components: { Card },
+  components: { Card, Alert },
   data() {
     return {
       available_toppings: [],
@@ -171,7 +183,9 @@ export default {
       checked_countertops: null,
       checked_drink: null,
       checked_size: null,
-      pizza: {}
+      pizza: {},
+      status: null,
+      feedback: null
     }
   },
   methods: {
@@ -188,6 +202,18 @@ export default {
           })
         })
         .catch(err => console.error(err))
+    },
+    submitOrder() {
+      this.feedback = "Your order is being processed right now.Please check your E-mail for further information!"
+      this.status = "success"
+    },
+    resetOrder() {
+
+      this.checked_countertops = this.available_countertops[0].id
+      this.checked_pizza = this.available_pizzas[0].id
+      this.checked_size = "small"
+      this.checked_toppings = []
+      this.checked_drink = null
     }
   },
   async beforeMount() {
@@ -213,6 +239,8 @@ export default {
 
 
     this.checked_pizza = this.available_pizzas[0].id
+    this.checked_countertops = this.available_countertops[0].id
+    this.checked_size = "small"
   },
   async beforeUpdate() {
     let index = this.available_pizzas.findIndex(el => el.id == this.checked_pizza)
@@ -225,6 +253,9 @@ export default {
     this.pizza.name = this.available_pizzas[index].data.name
     this.pizza.price = this.available_pizzas[index].data.price
     this.pizza.toppings = this.available_pizzas[index].data.toppings
+    this.pizza.size = this.checked_size;
+
+    // console.log(this.pizza);
 
   }
 }

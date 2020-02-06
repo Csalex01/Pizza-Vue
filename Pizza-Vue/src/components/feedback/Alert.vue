@@ -27,6 +27,9 @@ export default {
         case "failure":
           this.feedback = "Error: " + this.message
           break;
+        case "success":
+          this.feedback = "Success: " + this.message
+          break;
         default:
           this.feedback = this.message
       }
@@ -42,9 +45,7 @@ export default {
   background: #acece6;
   color: #155724;
   border-radius: 5px;
-  padding: 5;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 10px 20px 20px 20px;
   height: auto;
 }
 
