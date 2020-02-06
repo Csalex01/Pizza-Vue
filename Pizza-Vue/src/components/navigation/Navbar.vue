@@ -7,7 +7,10 @@
         </a>
         <ul id="nav-mobile" class="hide-on-small-only">
           <li class="left">
-            <router-link :to="{ name: 'Index' }">Home</router-link>
+            <router-link :to="{ name: 'Index' }">
+              Home
+              <i class="material-icons left">home</i>
+            </router-link>
           </li>
           <li class="left">
             <router-link :to="{ name: 'Order' }">Order</router-link>

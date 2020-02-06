@@ -8,11 +8,14 @@
         <span class="card-title activator grey-text text-darken-4">
           <span class="text-darken-4 m-4 red-text name">{{ this.name }}</span>
           <i class="material-icons right">more_vert</i>
-          <span class="green-text text-darken-2 price">{{ `${this.price} €` }}</span>
+          <span class="green-text text-darken-2 price">{{ `RON${this.price}` }}</span>
         </span>
       </div>
       <div class="card-action">
-        <a href="#" class="btn activator waves-effect waves-light">Details</a>
+        <a href="#" class="btn activator waves-effect waves-light">
+          Details
+          <i class="material-icons right">info</i>
+        </a>
         <a href="#" class="btn waves-effect waves-light">Order</a>
       </div>
       <div class="card-reveal">
