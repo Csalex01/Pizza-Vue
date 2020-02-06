@@ -1,4 +1,4 @@
-# pizza-vue
+# Pizza Vue
 
 ## Build Setup
 
