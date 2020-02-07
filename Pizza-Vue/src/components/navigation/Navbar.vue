@@ -29,7 +29,10 @@
               <a @click="logout">Logut</a>
             </li>
             <li class="right">
-              <router-link :to="{ name: 'Index' }" class="waves-effect waves-light">Profile</router-link>
+              <router-link
+                :to="{ name: 'Profile' }"
+                class="waves-effect waves-light"
+              >Profile ({{ name }})</router-link>
             </li>
           </div>
         </ul>
@@ -48,7 +51,7 @@
         <router-link :to="{ name: 'Signup' }" class="waves-effect waves-light">Signup</router-link>
       </li>
       <li>
-        <a @click="logout">Logut</a>
+        <a @click="logout">Logout</a>
       </li>
       <li>
         <router-link :to="{ name: 'Login' }" class="waves-effect waves-light">Login</router-link>
@@ -58,14 +61,16 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from "firebase"
+import db from "@/firebase/init"
 
 export default {
   name: "Navbar",
   data() {
     return {
       loggedIn: false,
-      isFixed: false
+      isFixed: false,
+      name: null
     };
   },
   methods: {
@@ -78,10 +83,21 @@ export default {
     await firebase
       .auth()
       .onAuthStateChanged(user => (this.loggedIn = user ? true : false))
-  },
-  mounted() {
 
-  }
+    const user = firebase.auth().currentUser
+
+    const ref = await db.collection("users").doc(user.uid)
+
+    ref.get().then(doc => {
+      if (doc.exists) {
+        const data = doc.data()
+        this.name = `${data.firstName} ${data.lastName}`
+      }
+      else
+        console.log("No such document.")
+    }).catch(err => console.error(err))
+  },
+
 };
 </script>
 

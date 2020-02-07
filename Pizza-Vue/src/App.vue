@@ -11,9 +11,8 @@
       />
     </div>-->
 
-    <div style="clear: both hide-on-small-only"></div>
+    <!-- <div style="clear: both hide-on-small-only"></div> -->
     <div class="center container">
-      <div style="clear: both"></div>
       <!-- This part makes the 🍕PizzaVue🍕 loog possible -->
       <div class="iris hide-on-small-only">
         <div class="card transparent z-depth-0">
@@ -34,21 +33,22 @@
 
       <Footer />
     </div>
-    <div class="side_banner">
+
+    <!-- <div class="side_banner">
       <div class="left_ sticky hide-on-small-only">
         <img src="http://www.tallheights.com/wp-content/uploads/2016/06/background_purple.jpg" alt />
-      </div>
-      <!-- <div class="col right_ sticky hide-on-small-only">RIGHT</div> -->
-      <div class="right_ sticky hide-on-small-only">
+    </div>-->
+    <!-- <div class="col right_ sticky hide-on-small-only">RIGHT</div> -->
+    <!-- <div class="right_ sticky hide-on-small-only">
         <img src="http://www.tallheights.com/wp-content/uploads/2016/06/background_purple.jpg" alt />
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/navigation/Navbar";
-import Footer from "@/components/navigation/Footer";
+import Footer from "@/components/display/Footer";
 
 export default {
   name: "App",

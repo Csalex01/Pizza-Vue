@@ -12,7 +12,7 @@
         </span>
       </div>
       <div class="card-action">
-        <a href="#" class="btn activator waves-effect waves-light">
+        <a href="#" @click.prevent class="btn activator waves-effect waves-light">
           Details
           <i class="material-icons right">info</i>
         </a>
