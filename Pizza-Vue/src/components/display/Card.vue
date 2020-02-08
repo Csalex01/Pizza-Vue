@@ -8,7 +8,7 @@
         <span class="card-title activator grey-text text-darken-4">
           <span class="text-darken-4 m-4 red-text name">{{ this.name }}</span>
           <i class="material-icons right">more_vert</i>
-          <span class="green-text text-darken-2 price">{{ `RON${this.price}` }}</span>
+          <span class="green-text text-darken-2 price">{{ `${this.price} RON` }}</span>
         </span>
       </div>
       <div class="card-action">

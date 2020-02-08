@@ -269,7 +269,7 @@ export default {
             address1: this.address1,
             address2: this.address2,
             uid: user.uid
-          });
+          })
         this.$router.push({ name: "Index" })
       } catch (err) {
         this.feedback = err

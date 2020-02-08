@@ -66,7 +66,7 @@
                   <input
                     type="radio"
                     :id="countertop.id"
-                    v-model="checked_countertops"
+                    v-model="checked_countertop"
                     class="filled-in"
                     :value="countertop.id"
                   />
@@ -180,7 +180,7 @@ export default {
       available_pizzas: [],
       checked_toppings: [],
       checked_pizza: null,
-      checked_countertops: null,
+      checked_countertop: null,
       checked_drink: null,
       checked_size: null,
       pizza: {},
@@ -203,13 +203,86 @@ export default {
         })
         .catch(err => console.error(err))
     },
-    submitOrder() {
-      this.feedback = "Your order is being processed right now.Please check your E-mail for further information!"
+    async getDocFromCollection(options) {
+      const response = await db
+        .collection(options.collectionName)
+        .doc(options.docName)
+
+      let document = null
+
+      await response.get()
+        .then((doc) => {
+          if (doc.exists)
+            document = doc.data()
+        })
+        .catch((err) => console.error(err))
+
+      return document
+    },
+    async submitOrder() {
+      const id = `order_${Date.now() % 100000}`
+      const user = firebase.auth().currentUser
+
+      let total = 0
+
+      for (let topping of this.checked_toppings) {
+        const data = await this.getDocFromCollection({
+          collectionName: "available_toppings",
+          docName: topping
+        })
+
+        total += data.price
+      }
+
+      let pizza = await this.getDocFromCollection({
+        collectionName: "pizzas",
+        docName: this.checked_pizza
+      })
+
+      let countertop = await this.getDocFromCollection({
+        collectionName: "available_countertops",
+        docName: this.checked_countertop
+      })
+
+      let drink = (this.checked_drink == null) ? { price: 0 } : await this.getDocFromCollection({
+        collectionName: "available_drinks",
+        docName: this.checked_drink
+      })
+
+      total += countertop.price
+      total += drink.price
+      total += pizza.price
+
+      if (this.checked_size == "medium")
+        total += 3
+      else if (this.checked_size == "large")
+        total += 6
+
+      console.log(countertop.price)
+      console.log(drink.price)
+      console.log(total)
+
+      const response = await db
+        .collection("orders")
+        .doc(id)
+        .set({
+          uid: user.uid,
+          toppings: this.checked_toppings,
+          pizza: this.checked_pizza,
+          countertop: this.checked_countertop,
+          drink: this.checked_drink,
+          size: this.checked_drink,
+          price: total
+        })
+
+
+      this.feedback = `Your order is being processed at the moment. Your total is: ${total} RON`
       this.status = "success"
+
+      // setInterval(() => this.$router.push({ name: "Index" }), 5000)
     },
     resetOrder() {
-
-      this.checked_countertops = this.available_countertops[0].id
+      this.checked_countertop = this.available_countertops[0].id
       this.checked_pizza = this.available_pizzas[0].id
       this.checked_size = "small"
       this.checked_toppings = []
@@ -239,7 +312,7 @@ export default {
 
 
     this.checked_pizza = this.available_pizzas[0].id
-    this.checked_countertops = this.available_countertops[0].id
+    this.checked_countertop = this.available_countertops[0].id
     this.checked_size = "small"
   },
   async beforeUpdate() {
