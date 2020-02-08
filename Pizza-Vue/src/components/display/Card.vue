@@ -16,7 +16,7 @@
           Details
           <i class="material-icons right">info</i>
         </a>
-        <a href="#" class="btn waves-effect waves-light">Order</a>
+        <a v-if="loggedIn" class="btn waves-effect waves-light">Order</a>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">
@@ -38,6 +38,9 @@
 </template>
 
 <script>
+import firebase from "firebase"
+import db from "@/firebase/init"
+
 export default {
   name: "Card",
   props: {
@@ -48,9 +51,16 @@ export default {
     img_url: null,
   },
   data() {
-    return {}
+    return {
+      loggedIn: false
+    }
   },
-  methods: {}
+  methods: {},
+  async beforeMount() {
+    await firebase
+      .auth()
+      .onAuthStateChanged(user => (this.loggedIn = user ? true : false))
+  }
 }
 </script>
 

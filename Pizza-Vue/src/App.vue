@@ -110,7 +110,7 @@ body {
 }
 
 .container {
-  width: 70%;
+  width: 90%;
 }
 
 .content {

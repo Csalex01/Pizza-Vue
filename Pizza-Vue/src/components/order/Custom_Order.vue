@@ -185,7 +185,8 @@ export default {
       checked_size: null,
       pizza: {},
       status: null,
-      feedback: null
+      feedback: null,
+      user: null
     }
   },
   methods: {
@@ -221,7 +222,6 @@ export default {
     },
     async submitOrder() {
       const id = `order_${Date.now() % 100000}`
-      const user = firebase.auth().currentUser
 
       let total = 0
 
@@ -258,15 +258,15 @@ export default {
       else if (this.checked_size == "large")
         total += 6
 
-      console.log(countertop.price)
-      console.log(drink.price)
-      console.log(total)
+      // console.log(countertop.price)
+      // console.log(drink.price)
+      // console.log(total)
 
       const response = await db
         .collection("orders")
         .doc(id)
         .set({
-          uid: user.uid,
+          uid: this.user.uid,
           toppings: this.checked_toppings,
           pizza: this.checked_pizza,
           countertop: this.checked_countertop,
@@ -290,6 +290,11 @@ export default {
     }
   },
   async beforeMount() {
+    this.user = firebase.auth().currentUser
+
+    if (!this.user)
+      this.$router.push({ name: "Login" })
+
     await this.getCollection({
       name: "pizzas",
       array: this.available_pizzas
@@ -314,6 +319,7 @@ export default {
     this.checked_pizza = this.available_pizzas[0].id
     this.checked_countertop = this.available_countertops[0].id
     this.checked_size = "small"
+
   },
   async beforeUpdate() {
     let index = this.available_pizzas.findIndex(el => el.id == this.checked_pizza)

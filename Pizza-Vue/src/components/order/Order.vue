@@ -1,8 +1,14 @@
 <template>
   <div class="row">
     <h2 class="teal-text darken-4">Order</h2>
-    <div class="row">
+    <div v-if="loggedIn" class="row">
       <router-link :to="{ name: 'Custom_Order'}" class="btn waves-effect waves-light">Custom Order</router-link>
+    </div>
+    <div v-else class="row">
+      <router-link
+        :to="{ name: 'Login'}"
+        class="btn waves-effect waves-light"
+      >Please log in to submit an order</router-link>
     </div>
     <div v-for="pizza in pizzas" :key="pizza.id">
       <Card
@@ -27,10 +33,14 @@ export default {
   components: { Card },
   data() {
     return {
-      pizzas: []
+      pizzas: [],
+      loggedIn: false
     };
   },
   async beforeMount() {
+    await firebase
+      .auth()
+      .onAuthStateChanged(user => (this.loggedIn = user ? true : false))
     await db
       .collection("pizzas")
       .get()

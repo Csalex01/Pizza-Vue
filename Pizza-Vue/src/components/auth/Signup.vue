@@ -152,6 +152,14 @@
         <button type="submit" class="btn" @click.prevent="signup">Signup</button>
       </div>
     </form>
+    <div class="row">
+      <div class="col s12">
+        <p class="teal-text darken-4">
+          Already have an account?
+          <router-link :to="{name: 'Login'}">Login</router-link>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 

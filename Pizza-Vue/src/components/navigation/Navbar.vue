@@ -15,6 +15,9 @@
           <li class="left">
             <router-link :to="{ name: 'Order' }">Order</router-link>
           </li>
+          <li class="left">
+            <router-link :to="{ name: 'Contact' }">Contact</router-link>
+          </li>
 
           <div v-if="!loggedIn">
             <li class="right">
@@ -75,7 +78,7 @@ export default {
   },
   methods: {
     async logout() {
-      const response = await firebase.auth().signOut()
+      await firebase.auth().signOut()
       this.$router.push({ name: "Index" })
     }
   },
@@ -84,19 +87,19 @@ export default {
       .auth()
       .onAuthStateChanged(user => (this.loggedIn = user ? true : false))
 
-    const user = firebase.auth().currentUser
+    const user = await firebase.auth().currentUser
 
-    const ref = await db.collection("users").doc(user.uid)
+    if (user) {
+      const ref = (user == null) ? null : await db.collection("users").doc(user.uid)
 
-    ref.get().then(doc => {
-      if (doc.exists) {
-        const data = doc.data()
-        this.name = `${data.firstName} ${data.lastName}`
-      }
-      else
-        console.log("No such document.")
-    }).catch(err => console.error(err))
-  },
+      ref.get().then(doc => {
+        if (doc.exists) {
+          const data = doc.data()
+          this.name = `${data.firstName} ${data.lastName}`
+        }
+      }).catch(err => console.error(err))
+    }
+  }
 
 };
 </script>

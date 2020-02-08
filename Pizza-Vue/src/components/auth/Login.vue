@@ -18,6 +18,15 @@
       <div class="row col s12">
         <button type="submit" class="btn" @click.prevent="login">Login</button>
       </div>
+
+      <div class="row">
+        <div class="col s12">
+          <p class="teal-text darken-4">
+            Not logged in?
+            <router-link :to="{name: 'Signup'}">Sign up</router-link>
+          </p>
+        </div>
+      </div>
     </form>
   </div>
 </template>
@@ -67,8 +76,7 @@ export default {
         await firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
-
-        this.$router.push({ name: "Index" })
+        this.$router.go(-1)
       } catch (err) {
         this.feedback = err.message
       }

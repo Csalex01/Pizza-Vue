@@ -3,10 +3,12 @@
     <div class="col s12 center-align grey-text lighten-3">
       <p>
         Every image found on this site can be found
-        <a href="http://pizzahutdelivery.ro" target="_blank">here</a>
+        <a
+          href="http://pizzahutdelivery.ro"
+          target="_blank"
+        >here</a>
         [PizzaHut Delivery]
-        <br />
-        &copy;Copyright 2020 PIZZAVUE RESTAURANT SYSTEM
+        <br />&copy;Copyright 2020 PIZZAVUE RESTAURANT
       </p>
     </div>
   </div>
