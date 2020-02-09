@@ -1,7 +1,10 @@
 <template>
   <div class="row">
     <div class="row">
-      <h2 class="teal-text darken-4">Contact</h2>
+      <h2 class="teal-text darken-4">
+        <i class="material-icons" style="font-size: 40px">email</i>
+        Contact
+      </h2>
     </div>
 
     <div class="row">
@@ -32,7 +35,7 @@
         </form>
       </div>
       <div class="col s6 map">
-        <h4 class="teal-text darken-4">Find us on the map!</h4>
+        <h4 class="teal-text darken-4">Find us on Google Maps!</h4>
         <div class="row">
           <div class="col s12">
             <iframe

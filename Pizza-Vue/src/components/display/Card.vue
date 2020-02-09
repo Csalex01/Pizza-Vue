@@ -16,7 +16,10 @@
           Details
           <i class="material-icons right">info</i>
         </a>
-        <a v-if="loggedIn" class="btn waves-effect waves-light">Order</a>
+        <a v-if="loggedIn" class="btn waves-effect waves-light">
+          Order
+          <i class="material-icons right">add_shopping_cart</i>
+        </a>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">

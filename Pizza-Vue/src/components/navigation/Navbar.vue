@@ -13,10 +13,16 @@
             </router-link>
           </li>
           <li class="left">
-            <router-link :to="{ name: 'Order' }">Order</router-link>
+            <router-link :to="{ name: 'Order' }">
+              Order
+              <i class="material-icons left">add_shopping_cart</i>
+            </router-link>
           </li>
           <li class="left">
-            <router-link :to="{ name: 'Contact' }">Contact</router-link>
+            <router-link :to="{ name: 'Contact' }">
+              Contact
+              <i class="material-icons left">email</i>
+            </router-link>
           </li>
 
           <div v-if="!loggedIn">
@@ -29,13 +35,16 @@
           </div>
           <div v-else>
             <li class="right">
-              <a @click="logout">Logut</a>
+              <a @click="logout">
+                Logout
+                <i class="material-icons left">logout</i>
+              </a>
             </li>
             <li class="right">
-              <router-link
-                :to="{ name: 'Profile' }"
-                class="waves-effect waves-light"
-              >Profile ({{ name }})</router-link>
+              <router-link :to="{ name: 'Profile' }" class="waves-effect waves-light">
+                {{ name }}
+                <i class="material-icons left">account_box</i>
+              </router-link>
             </li>
           </div>
         </ul>

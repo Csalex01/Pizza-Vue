@@ -1,9 +1,12 @@
 <template>
   <div class="row">
-    <h2 class="teal-text darken-4">Custom Order</h2>
+    <h2 class="teal-text darken-4">
+      <i class="material-icons" style="font-size: 40px">add_shopping_cart</i>
+      Custom Order
+    </h2>
 
     <form action class="col s12">
-      <div class="col s6">
+      <div class="col s7">
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Pizza</h4>
@@ -36,7 +39,7 @@
         </div>
       </div>
 
-      <div class="col s6">
+      <div class="col s5">
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Toppings</h4>
@@ -271,7 +274,7 @@ export default {
           pizza: this.checked_pizza,
           countertop: this.checked_countertop,
           drink: this.checked_drink,
-          size: this.checked_drink,
+          size: this.checked_size,
           price: total
         })
 

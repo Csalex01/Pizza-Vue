@@ -1,6 +1,9 @@
 <template>
   <div class="row">
-    <h2 class="teal-text darken-4">Order</h2>
+    <h2 class="teal-text darken-4">
+      <i class="material-icons" style="font-size: 40px">add_shopping_cart</i>
+      Order
+    </h2>
     <div v-if="loggedIn" class="row">
       <router-link :to="{ name: 'Custom_Order'}" class="btn waves-effect waves-light">Custom Order</router-link>
     </div>

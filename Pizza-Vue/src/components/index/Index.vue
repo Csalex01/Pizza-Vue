@@ -1,6 +1,9 @@
 <template>
-  <div class="index">
-    <h2 class="teal-text darken-4">Home</h2>
+  <div class="row">
+    <h2 class="teal-text darken-4">
+      <i class="material-icons" style="font-size: 40px">home</i>
+      Home
+    </h2>
   </div>
 </template>
 

@@ -76,7 +76,8 @@ export default {
         await firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
-        this.$router.go(-1)
+        // this.$router.go(-1)
+        this.$router.push({ name: "Index" })
       } catch (err) {
         this.feedback = err.message
       }

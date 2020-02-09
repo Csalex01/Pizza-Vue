@@ -65,7 +65,7 @@ export default {
 
 body {
   overflow-y: scroll;
-  background-color: whitesmoke;
+  background-color: #eef8ff;
   /* background-color: red; */
   /* background-image: -moz-linear-gradient(to bottom left, red, yellow);
   background-repeat: no-repeat;
