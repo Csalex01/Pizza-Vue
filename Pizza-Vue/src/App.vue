@@ -56,7 +56,6 @@ export default {
   watch: {
     '$route': (to, from) => {
       document.title = `${to.meta.title} | 🍕 Pizza Vue 🍕` || "Home | 🍕 Pizza Vue 🍕"
-      next()
     }
   },
   beforeCreate() {
