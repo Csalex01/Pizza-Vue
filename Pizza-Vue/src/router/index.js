@@ -20,36 +20,85 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
+      meta: {
+        title: "Home",
+        metaTagss: [{
+          name: 'description',
+          content: 'The Home page of Pizza Vue'
+        }]
+      },
       props: true
     },
     {
       path: '/login',
       name: 'Login',
+      meta: {
+        title: "Login",
+        metaTagss: [{
+          name: 'description',
+          content: 'The Login page of Pizza Vue'
+        }]
+      },
       component: Login
     },
     {
       path: '/signup',
       name: 'Signup',
+      meta: {
+        title: "Signup",
+        metaTagss: [{
+          name: 'description',
+          content: 'The Signup page of Pizza Vue'
+        }]
+      },
       component: Signup
     },
     {
       path: "/order",
       name: "Order",
-      component: Order
+      meta: {
+        title: "Order",
+        metaTagss: [{
+          name: 'description',
+          content: 'The Order page of Pizza Vue'
+        }]
+      },
+      component: Order,
     },
     {
       path: "/order/custom",
       name: "Custom_Order",
+      meta: {
+        title: "Custom Order",
+        metaTagss: [{
+          name: 'description',
+          content: 'The Custom Order page of Pizza Vue'
+        }]
+      },
       component: Custom_Order
     },
     {
       path: "/profile",
       name: "Profile",
+      meta: {
+        title: "Profile",
+        metaTagss: [{
+          name: 'description',
+          content: 'Your Profile page'
+        }]
+      },
       component: Profile
     },
     {
       path: "/contact",
       name: "Contact",
+      meta: {
+        title: "Contact",
+        metaTagss: [{
+          name: 'description',
+          content: 'The Contact page of Pizza Vue'
+        }]
+      },
       component: Contact
     }
   ]
