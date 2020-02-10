@@ -19,6 +19,7 @@ export default new Router({
   routes: [{
       path: '/',
       name: 'Index',
+      auth: false,
       component: Index,
       meta: {
         title: "Home",
@@ -44,6 +45,7 @@ export default new Router({
     {
       path: '/signup',
       name: 'Signup',
+      auth: false,
       meta: {
         title: "Signup",
         metaTagss: [{
@@ -56,6 +58,7 @@ export default new Router({
     {
       path: "/order",
       name: "Order",
+      auth: false,
       meta: {
         title: "Order",
         metaTagss: [{
@@ -68,6 +71,7 @@ export default new Router({
     {
       path: "/order/custom",
       name: "Custom_Order",
+      auth: true,
       meta: {
         title: "Custom Order",
         metaTagss: [{
@@ -80,6 +84,7 @@ export default new Router({
     {
       path: "/profile",
       name: "Profile",
+      auth: true,
       meta: {
         title: "Profile",
         metaTagss: [{
@@ -92,6 +97,7 @@ export default new Router({
     {
       path: "/contact",
       name: "Contact",
+      auth: false,
       meta: {
         title: "Contact",
         metaTagss: [{

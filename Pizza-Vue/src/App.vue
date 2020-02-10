@@ -52,7 +52,16 @@ import Footer from "@/components/display/Footer";
 
 export default {
   name: "App",
-  components: { Navbar, Footer }
+  components: { Navbar, Footer },
+  watch: {
+    '$route': (to, from) => {
+      document.title = `${to.meta.title} | 🍕 Pizza Vue 🍕` || "Home | 🍕 Pizza Vue 🍕"
+      next()
+    }
+  },
+  beforeCreate() {
+    document.title = `${this.$route.meta.title} | 🍕 Pizza Vue 🍕`
+  }
 };
 </script>
 
