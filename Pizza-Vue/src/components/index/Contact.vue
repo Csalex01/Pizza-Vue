@@ -19,9 +19,10 @@
               cols="30"
               rows="10"
               class="materialize-textarea"
+              v-model="comment"
             ></textarea>
             <label for="input_text">Enter your text here!</label>
-            <a class="waves-effect waves-light btn" @click.prevent>Submit</a>
+            <a class="waves-effect waves-light btn" @click.prevent="submitComment">Submit</a>
 
             <div class="row">
               <div class="col s12">
@@ -30,6 +31,9 @@
                   <span class="email">pizza@csalex.org</span>
                 </h5>
               </div>
+            </div>
+            <div v-if="alertMessage" class="row col s12">
+              <Alert :status="this.status" :message="this.alertMessage"></Alert>
             </div>
           </div>
         </form>
@@ -52,11 +56,48 @@
 </template>
 
 <script>
+import firebase from "firebase"
+import db from "@/firebase/init"
+
+import Alert from "@/components/feedback/Alert"
+
 export default {
   name: "Index",
   data() {
     return {
+      comment: null,
+      user: null,
+      status: null,
+      alertMessage: null
     }
+  },
+  components: { Alert },
+  methods: {
+    async submitComment() {
+      const id = `feedback_${Date.now() % 100000}`
+
+      if (this.comment) {
+        const reponse = await db
+          .collection("feedbacks")
+          .doc(id)
+          .set({
+            uid: this.user.uid,
+            comment: this.comment
+          })
+
+        this.status = "success"
+        this.alertMessage = "We got your feedback. Thank you!"
+
+        this.comment = null
+
+      } else {
+        this.status = "warning"
+        this.alertMessage = "Please enter your feedback in the given field!"
+      }
+    }
+  },
+  async beforeMount() {
+    this.user = firebase.auth().currentUser
   }
 }
 </script>
