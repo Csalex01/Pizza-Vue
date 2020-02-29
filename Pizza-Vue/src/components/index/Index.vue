@@ -10,9 +10,10 @@
           <h4 class="col s12 teal-text darken-4">What we offer</h4>
         </div>
         <div class="row">
-          <p
+          <!-- <p
             class="col s12 flow-text left"
-          >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed itaque natus ut harum et dicta, nemo atque quo, quaerat deleniti doloribus ipsum accusantium, delectus perferendis corporis quos blanditiis id aperiam.</p>
+          >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed itaque natus ut harum et dicta, nemo atque quo, quaerat deleniti doloribus ipsum accusantium, delectus perferendis corporis quos blanditiis id aperiam.</p>-->
+          <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus ullam harum adipisci asperiores distinctio voluptatem autem, laudantium reprehenderit dignissimos laborum. Porro provident vitae inventore, quisquam ex incidunt officia earum quae.Ea odit quam nihil minus atque doloribus, sunt recusandae ducimus dolores mollitia corrupti suscipit maxime vero, numquam, doloremque iure excepturi itaque ipsum amet porro voluptates ipsa assumenda. Voluptas, eos consectetur.</span>
         </div>
       </div>
     </div>
@@ -30,4 +31,7 @@ export default {
 </script>
 
 <style>
+span {
+  font-size: 20px;
+}
 </style>
