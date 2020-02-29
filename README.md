@@ -1,4 +1,4 @@
-### You can access the latest version of the website by clicking [here](https://pizza.csalex.org "PizzaVue").
+### You can access the latest build of the website by clicking [here](https://pizza.csalex.org "PizzaVue").
 
 ## Általános leírás
 Ez a weboldal a PizzaHut által inspirált web shop szerepét tölti be, ahonnan egy felhasználóbarát környezetből a felhasználó ki tud választani és rendelni az előre elkészített ajánlatokból vagy képes saját ízlésének megfelelően egyedi rendeléseket létrehozni, mindezt a saját otthona kényelméből.
