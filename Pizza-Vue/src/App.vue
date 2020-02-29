@@ -118,14 +118,11 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 100%;
 }
 
 .content {
-  /* position: relative; */
   min-height: 50vh;
-  /* transform: translateY(calc(var(--left_right_height) * (-0.5))); */
-  /* top: calc(var(--left_right_height) * (-0.45)); */
 }
 
 .iris {
