@@ -7,11 +7,9 @@ import App from './App'
 import router from "./router/index"
 import firebase from 'firebase'
 
-let app = null
-
+let app = null;
 
 if (!app) {
-
   firebase.auth().onAuthStateChanged(user => {
     app = new Vue({
       el: '#app',
@@ -22,6 +20,4 @@ if (!app) {
       template: '<App/>'
     })
   })
-
-  $('.sidenav').sidenav()
 }
