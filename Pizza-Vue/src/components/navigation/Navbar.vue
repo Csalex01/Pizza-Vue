@@ -2,7 +2,7 @@
   <div class="row">
     <nav class="navbar container red z-depth-2">
       <div class="nav-wrapper">
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-small-only">
+        <a data-target="slide-out" class="sidenav-trigger hide-on-med-and-up">
           <i class="material-icons">menu</i>
         </a>
         <ul id="nav-mobile" class="hide-on-small-only">
@@ -27,10 +27,10 @@
 
           <div v-if="!loggedIn">
             <li class="right">
-              <router-link :to="{ name: 'Signup' }" class="btn waves-effect waves-light">Signup</router-link>
+              <router-link :to="{ name: 'Signup' }" class="btn">Signup</router-link>
             </li>
             <li class="right">
-              <router-link :to="{ name: 'Login' }" class="waves-effect waves-light">Login</router-link>
+              <router-link :to="{ name: 'Login' }">Login</router-link>
             </li>
           </div>
           <div v-else>
@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="right">
-              <router-link :to="{ name: 'Profile' }" class="waves-effect waves-light">
+              <router-link :to="{ name: 'Profile' }">
                 {{ name }}
                 <i class="material-icons left">account_box</i>
               </router-link>
@@ -51,8 +51,10 @@
       </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo">
-      <h5 class="teal-text">Navigation buttons</h5>
+    <ul class="sidenav" id="slide-out">
+      <li>
+        <h5 class="teal-text">Navigation buttons</h5>
+      </li>
       <li>
         <router-link :to="{ name: 'Index' }">Home</router-link>
       </li>
@@ -60,13 +62,13 @@
         <router-link :to="{ name: 'Order' }">Order</router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'Signup' }" class="waves-effect waves-light">Signup</router-link>
+        <router-link :to="{ name: 'Signup' }">Signup</router-link>
       </li>
       <li>
         <a @click="logout">Logout</a>
       </li>
       <li>
-        <router-link :to="{ name: 'Login' }" class="waves-effect waves-light">Login</router-link>
+        <router-link :to="{ name: 'Login' }">Login</router-link>
       </li>
     </ul>
   </div>
@@ -108,6 +110,9 @@ export default {
         }
       }).catch(err => console.error(err))
     }
+  },
+  mounted() {
+    $('.sidenav').sidenav()
   }
 
 };
@@ -117,7 +122,19 @@ export default {
 .navbar {
   width: 100%;
   padding: 0 20px 0 20px;
-  margin-top: 5px;
+  margin-top: 0px;
+}
+
+.sidenav {
+  margin-top: 56px;
+}
+
+.sidenav-overlay {
+  z-index: 9;
+}
+
+.iris {
+  margin: 0 0 5px 0;
 }
 
 li > a:focus {
