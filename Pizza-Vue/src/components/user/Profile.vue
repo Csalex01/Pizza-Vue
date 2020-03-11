@@ -12,7 +12,7 @@
             <h4 class="teal-text darken-4">E-mail</h4>
             <div class="col s12">
               <div class="input-field">
-                <input type="email" id="email" />
+                <input type="email" id="email" v-model="email" />
                 <label for="email" class="req">Email</label>
               </div>
             </div>
@@ -21,13 +21,13 @@
             <h4 class="teal-text darken-4">Name</h4>
             <div class="col s6">
               <div class="input-field">
-                <input id="firstname" type="text" />
+                <input id="firstname" type="text" v-model="firstName" />
                 <label for="firstname" class="req">First name</label>
               </div>
             </div>
             <div class="col s6">
               <div class="input-field">
-                <input id="lastname" type="text" />
+                <input id="lastname" type="text" v-model="lastName" />
                 <label for="lastname" class="req">Last name</label>
               </div>
             </div>
@@ -56,13 +56,13 @@
           <div class="row">
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="cardholder_firstname" />
+                <input type="text" id="cardholder_firstname" v-model="cardholder_firstame" />
                 <label for="cardholder_firstname" class="req">Cardholer's first name</label>
               </div>
             </div>
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="cardholder_lastname" />
+                <input type="text" id="cardholder_lastname" v-model="cardholder_lastName" />
                 <label for="cardholder_lastname" class="req">Cardholer's last name</label>
               </div>
             </div>
@@ -71,13 +71,13 @@
             <h5 class="teal-text darken-4">Security</h5>
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="cardnumber" />
+                <input type="text" id="cardnumber" v-model="cardNumber" />
                 <label for="cardnumber" class="req">Card number</label>
               </div>
             </div>
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="cvc2" />
+                <input type="text" id="cvc2" v-model="cvc2" />
                 <label for="cvc2" class="req">CVC2/CVV</label>
               </div>
             </div>
@@ -86,13 +86,13 @@
             <h5 class="teal-text darken-4">Expiry Date</h5>
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="month" />
+                <input type="text" id="month" v-model="month" />
                 <label for="month" class="req">Month</label>
               </div>
             </div>
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="year" />
+                <input type="text" id="year" v-model="year" />
                 <label for="year" class="req">Year</label>
               </div>
             </div>
@@ -100,13 +100,13 @@
           <div class="row">
             <h5 class="teal-text darken-4">Billing Address</h5>
             <div class="input-field">
-              <input type="text" id="address1" />
+              <input type="text" id="address1" v-model="address1" />
               <label for="address1" class="req">Address 1</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field">
-              <input type="text" id="address2" />
+              <input type="text" id="address2" v-model="address2" />
               <label for="address2">Address 2</label>
             </div>
           </div>
@@ -129,10 +129,69 @@ export default {
   name: "Profile",
   data() {
     return {
-      firstname: null
+      email: null,
+      password: null,
+      confirmPassword: null,
+      firstName: null,
+      lastName: null,
+      company: null,
+      address1: null,
+      address2: null,
+      cardNumber: null,
+      cardholder_firstame: null,
+      cardholder_lastName: null,
+      month: null,
+      year: null,
+      cvc2: null,
+      feedback: null,
+      status: null,
+      user: null,
+      doc: null
     }
-  }
+  },
+  methods: {
+    updateTextLabels() {
+      window.M.updateTextFields()
+    }
+  },
+  async beforeMount() {
+    this.user = firebase.auth().currentUser
 
+    if (!this.user)
+      this.$router.push({ name: "Login" })
+
+    const response = await db
+      .collection("users")
+      .doc(this.user.uid)
+
+    await response.get()
+      .then(doc => {
+        if (doc.exists)
+          this.doc = doc.data()
+      })
+
+    this.email = this.user.email
+    this.firstName = this.doc.firstName
+    this.lastName = this.doc.lastName
+    this.lastNam = this.doc.lastName
+    this.company = this.doc.company
+    this.address1 = this.doc.address1
+    this.address2 = this.doc.address2
+    this.cardNumber = this.doc.cardNumber
+    this.cardholder_firstame = this.doc.firstName
+    this.cardholder_lastName = this.doc.lastName
+    this.month = this.doc.month
+    this.year = this.doc.year
+    this.cvc2 = this.doc.cvc2
+
+    // Updates the Materialize labels.
+    // Adds M.updateTextFields() to the Event Queue
+    // on an other thread, thus making it possible
+    // to execute the function call simutaneously
+    // while the main loop executes from the main thread's queue.
+    // This enables us to update the labels instantaneously. 
+    await setTimeout(() => window.M.updateTextFields(), 0);
+  },
 }
 </script>
 
