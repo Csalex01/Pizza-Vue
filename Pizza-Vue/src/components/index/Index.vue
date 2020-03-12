@@ -5,7 +5,7 @@
       Home
     </h2>
     <div class="row">
-      <div class="col s6">
+      <div class="col s12 m6 l6 xl6">
         <div class="row">
           <h4 class="col s12 teal-text darken-4">What we offer</h4>
         </div>

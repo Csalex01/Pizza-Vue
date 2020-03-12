@@ -20,7 +20,7 @@
         :price="pizza.data.price"
         :toppings="pizza.data.toppings"
         :img_url="pizza.data.img_url"
-        class="s12 m4"
+        class="s12 m6 l4 xl4"
       />
     </div>
   </div>

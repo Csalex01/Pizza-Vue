@@ -7,7 +7,7 @@
 
     <div class="row">
       <form class="col s12">
-        <div class="col s4">
+        <div class="col s12 m12 l4 xl4">
           <div class="row">
             <h4 class="teal-text darken-4">E-mail</h4>
             <div class="col s12">
@@ -33,26 +33,28 @@
             </div>
           </div>
         </div>
-        <div class="col s4">
-          <h4 class="teal-text darken-4">Change Password</h4>
+
+        <div class="col s12 m12 l4 xl4">
+          <h4 class="teal-text darken-4">Password</h4>
           <div class="row">
             <div class="col s6">
               <div class="input-field">
                 <input type="password" id="password" />
-                <label for="password">Enter your new password</label>
+                <label for="password">New password</label>
               </div>
             </div>
 
             <div class="col s6">
               <div class="input-field">
                 <input type="password" id="confirm_password" />
-                <label for="confirm_password">Confirm your new password</label>
+                <label for="confirm_password">New Password (x2)</label>
               </div>
             </div>
           </div>
         </div>
-        <div class="col s4">
-          <h4 class="teal-text darken-4">Credit/Debit Card Details</h4>
+
+        <div class="col s12 m12 l4 xl4">
+          <h4 class="teal-text darken-4">Card Details</h4>
           <div class="row">
             <div class="col s6">
               <div class="input-field">
@@ -111,6 +113,7 @@
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col s12">
             <button type="submit" class="btn" @click.prevent>Save changes</button>

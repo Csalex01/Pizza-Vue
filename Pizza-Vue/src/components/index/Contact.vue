@@ -8,7 +8,7 @@
     </div>
 
     <div class="row">
-      <div class="col s6 feedback">
+      <div class="col s12 m6 feedback">
         <h4 class="teal-text darken-4">Send us a feedback!</h4>
         <form action>
           <div class="input-field col s12">
@@ -38,13 +38,13 @@
           </div>
         </form>
       </div>
-      <div class="col s6 map">
+      <div class="col s12 m6 map">
         <h4 class="teal-text darken-4">Find us on Google Maps!</h4>
         <div class="row">
-          <div class="col s12">
+          <div class="col s12 m12">
             <iframe
-              width="600"
-              height="450"
+              height="450px"
+              width="100%"
               frameborder="0"
               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD7c72gFgTC_GC9vPPNRCUw0g5GlibnViE&maptype=roadmap&q=High+School+Salamon+Erno,Gheorgheni"
             ></iframe>

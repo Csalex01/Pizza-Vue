@@ -6,7 +6,7 @@
     </h2>
 
     <form action class="col s12">
-      <div class="col s7">
+      <div class="col s12 m12 l7 xl7">
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Pizza</h4>
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div class="col s5">
+      <div class="col s12 m12 l5 xl5">
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Toppings</h4>
