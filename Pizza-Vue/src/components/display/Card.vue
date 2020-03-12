@@ -69,8 +69,8 @@ export default {
 
 <style>
 img {
-  max-width: 450px;
-  max-height: 450px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 hr {

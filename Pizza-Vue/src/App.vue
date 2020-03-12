@@ -19,8 +19,8 @@
           <h2 class="title">
             🍕 Pizza
             <span class="teal-text text-darken-1">
-              <img src="@/assets/images/logo.png" height="50px" />
-              <span style="margin-left: -20px ">ue</span>
+              <img src="@/assets/images/logo.png" height="60px" />
+              <span style="margin-left: -15px; font-size: 55px;">ue</span>
             </span>
             🍕
           </h2>

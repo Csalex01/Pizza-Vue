@@ -123,6 +123,7 @@ export default {
   width: 100%;
   padding: 0 20px 0 20px;
   margin-top: 0px;
+  overflow: hidden;
 }
 
 .sidenav {
@@ -137,9 +138,19 @@ export default {
   margin: 0 0 5px 0;
 }
 
-li > a:focus {
+.navbar a {
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  padding: 0 25px 0 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar a:focus {
   box-shadow: none;
   border: none;
   outline: none;
+  /* background-color: rgba(200, 0, 0, 0.5); */
 }
 </style>

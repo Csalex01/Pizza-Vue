@@ -50,6 +50,12 @@
             ></iframe>
           </div>
         </div>
+        <div class="row">
+          <span
+            class="red-text"
+            style="font-size: 15px;"
+          >Disclaimer: PizzaVue is a fictional company, this is a placeholder.</span>
+        </div>
       </div>
     </div>
   </div>
