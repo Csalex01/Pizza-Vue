@@ -1,4 +1,4 @@
-### You can access the latest build of the website by clicking [here](https://pizza.csalex.org "PizzaVue").
+### You can access the latest build for the website by clicking [here](https://pizza.csalex.org "PizzaVue").
 
 #### Ez nem a dokumentáció legújabb változata.
 
