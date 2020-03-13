@@ -144,7 +144,6 @@ export default {
 
 .navbar a:hover {
   padding: 0 25px 0 25px;
-  transition: all 0.3s ease-in-out;
 }
 
 .navbar a:focus {
