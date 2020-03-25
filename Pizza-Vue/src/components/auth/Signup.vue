@@ -44,6 +44,9 @@
       </div>
 
       <div class="row">
+        <h6
+          class="class red-text lighten-4"
+        >You can fill this out later, but you won't be able to order without valid billing information.</h6>
         <div class="col s6 left">
           <h5 class="row billing-payment-header teal-text darken-4">Billing Information</h5>
           <div class="row input-field col s12">
@@ -73,15 +76,8 @@
             <label for="company">Company</label>
           </div>
           <div class="row input-field col s12">
-            <input
-              type="text"
-              id="address1"
-              v-model="address1"
-              class="validate"
-              required
-              aria-required="true"
-            />
-            <label for="address1" class="req">Address 1</label>
+            <input type="text" id="address1" v-model="address1" />
+            <label for="address1">Address 1</label>
           </div>
           <div class="row input-field col s12">
             <input type="text" id="address2" v-model="address2" class="validate" />
@@ -92,51 +88,21 @@
         <div class="col s6 right">
           <h5 class="row billing-payment-header darken-4 teal-text">Payment Information</h5>
           <div class="row input-field col s12">
-            <input
-              type="text"
-              id="cardNumber"
-              v-model="cardNumber"
-              class="validate"
-              required
-              aria-required="true"
-            />
-            <label for="cardNumber" class="req">Your card number</label>
+            <input type="text" id="cardNumber" v-model="cardNumber" />
+            <label for="cardNumber">Your card number</label>
           </div>
           <div class="row col">
             <div class="input-field col s6">
-              <input
-                type="text"
-                placeholder="mm"
-                id="month"
-                v-model="month"
-                class="validate"
-                required
-                aria-required="true"
-              />
-              <label for="month" class="req">Month</label>
+              <input type="text" placeholder="mm" id="month" v-model="month" />
+              <label for="month">Month</label>
             </div>
             <div class="input-field col s6">
-              <input
-                type="text"
-                placeholder="yy"
-                id="year"
-                v-model="year"
-                class="validate"
-                required
-                aria-required="true"
-              />
-              <label for="year" class="req">Year</label>
+              <input type="text" placeholder="yy" id="year" v-model="year" />
+              <label for="year">Year</label>
             </div>
             <div class="row input-field col s12">
-              <input
-                type="text"
-                id="cvc2"
-                v-model="cvc2"
-                class="validate"
-                required
-                aria-required="true"
-              />
-              <label for="cvc2" class="req">CVV2/CVC2</label>
+              <input type="text" id="cvc2" v-model="cvc2" />
+              <label for="cvc2">CVV2/CVC2</label>
             </div>
           </div>
         </div>
@@ -166,8 +132,8 @@
 <script>
 import firebase from "firebase"
 import db from "@/firebase/init"
+import formValidator from "../CommonFunctions/FormValidator"
 
-import validator from "validator"
 import slugify from "slugify"
 
 import Alert from "../feedback/Alert"
@@ -189,7 +155,7 @@ export default {
       year: null,
       cvc2: null,
       feedback: null,
-      status: null
+      status: null,
     }
   },
   components: { Alert },
@@ -197,44 +163,33 @@ export default {
     validateForm() {
       this.feedback = null;
 
-      if (this.email && !validator.isEmail(this.email))
-        this.feedback = "E-mail incorrect!"
+      const params = {
+        email: this.email,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        cardNumber: this.cardNumber,
+        address1: this.address1,
+        month: this.month,
+        year: this.year,
+        cvc2: this.cvc2,
+        feedback: this.feedback
+      }
 
-      if (!this.password /* && this.password.length < 6 */)
-        this.feedback = "Password length must be at least 6!"
+      let requiredFields = {
+        email: this.email,
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        firstName: this.firstName,
+        lastName: this.lastName
+      }
 
-      if (this.password != this.confirmPassword)
-        this.feedback = "The passwords do not match!"
 
-      if (this.cardNumber && !validator.isCreditCard(this.cardNumber))
-        this.feedback = "Invalid card number, or try using an other card!"
+      const result = formValidator.validate(params, requiredFields)
 
-      if (parseInt(this.month) < 1 || parseInt(this.month) > 12)
-        this.feedback = "Invalid month!"
 
-      if (
-        parseInt(this.year) < 1 ||
-        parseInt(this.year) > 99 ||
-        parseInt(this.year) < new Date().getFullYear() % 100
-      )
-        this.feedback = "Invalid year!"
-
-      if (parseInt(this.cvc2) < 100 || parseInt(this.cvc2) > 999)
-        this.feedback = "Invalid CVV2/CVC2 number!"
-
-      if (
-        !this.email ||
-        !this.password ||
-        !this.confirmPassword ||
-        !this.firstName ||
-        !this.lastName ||
-        !this.cardNumber ||
-        !this.address1 ||
-        !this.month ||
-        !this.year ||
-        !this.cvc2
-      )
-        this.feedback = "All required fields must be filled!"
+      this.feedback = result.feedback
 
       if (this.feedback) {
         // console.log("Unsuccessful form validation!")
@@ -247,6 +202,8 @@ export default {
     },
     async signup() {
       const isValid = this.validateForm();
+
+      console.log(isValid)
 
       if (!isValid) return
 
@@ -280,7 +237,7 @@ export default {
           })
         this.$router.push({ name: "Index" })
       } catch (err) {
-        this.feedback = err
+        this.feedback = "Please check your details and try again!"
       }
     }
   }

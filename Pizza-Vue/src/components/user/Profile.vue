@@ -12,23 +12,15 @@
             <h4 class="teal-text darken-4">E-mail</h4>
             <div class="col s12">
               <div class="input-field">
-                <input type="email" id="email" v-model="email" />
+                <input
+                  type="email"
+                  id="email"
+                  v-model="email"
+                  class="validate"
+                  required
+                  aria-required="true"
+                />
                 <label for="email" class="req">Email</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <h4 class="teal-text darken-4">Name</h4>
-            <div class="col s6">
-              <div class="input-field">
-                <input id="firstname" type="text" v-model="firstName" />
-                <label for="firstname" class="req">First name</label>
-              </div>
-            </div>
-            <div class="col s6">
-              <div class="input-field">
-                <input id="lastname" type="text" v-model="lastName" />
-                <label for="lastname" class="req">Last name</label>
               </div>
             </div>
           </div>
@@ -58,14 +50,28 @@
           <div class="row">
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="cardholder_firstname" v-model="cardholder_firstame" />
-                <label for="cardholder_firstname" class="req">Cardholer's first name</label>
+                <input
+                  type="text"
+                  id="firstname"
+                  v-model="firstName"
+                  class="validate"
+                  required
+                  aria-required="true"
+                />
+                <label for="firstname" class="req">First name</label>
               </div>
             </div>
             <div class="col s6">
               <div class="input-field">
-                <input type="text" id="cardholder_lastname" v-model="cardholder_lastName" />
-                <label for="cardholder_lastname" class="req">Cardholer's last name</label>
+                <input
+                  type="text"
+                  id="lastname"
+                  v-model="lastName"
+                  class="validate"
+                  required
+                  aria-required="true"
+                />
+                <label for="lastname" class="req">Last name</label>
               </div>
             </div>
           </div>
@@ -74,7 +80,7 @@
             <div class="col s6">
               <div class="input-field">
                 <input type="text" id="cardnumber" v-model="cardNumber" />
-                <label for="cardnumber" class="req">Card number</label>
+                <label for="cardnumber">Card number</label>
               </div>
             </div>
             <div class="col s6">
@@ -89,13 +95,13 @@
             <div class="col s6">
               <div class="input-field">
                 <input type="text" id="month" v-model="month" />
-                <label for="month" class="req">Month</label>
+                <label for="month">Month</label>
               </div>
             </div>
             <div class="col s6">
               <div class="input-field">
                 <input type="text" id="year" v-model="year" />
-                <label for="year" class="req">Year</label>
+                <label for="year">Year</label>
               </div>
             </div>
           </div>
@@ -103,7 +109,7 @@
             <h5 class="teal-text darken-4">Billing Address</h5>
             <div class="input-field">
               <input type="text" id="address1" v-model="address1" />
-              <label for="address1" class="req">Address 1</label>
+              <label for="address1">Address 1</label>
             </div>
           </div>
           <div class="row">
@@ -112,6 +118,10 @@
               <label for="address2">Address 2</label>
             </div>
           </div>
+        </div>
+
+        <div class="row col s12">
+          <p class="red-text right-align">* - required field</p>
         </div>
 
         <div class="row">
@@ -135,14 +145,12 @@ export default {
       email: null,
       password: null,
       confirmPassword: null,
-      firstName: null,
-      lastName: null,
       company: null,
       address1: null,
       address2: null,
       cardNumber: null,
-      cardholder_firstame: null,
-      cardholder_lastName: null,
+      firstName: null,
+      lastName: null,
       month: null,
       year: null,
       cvc2: null,
@@ -174,15 +182,13 @@ export default {
       })
 
     this.email = this.user.email
-    this.firstName = this.doc.firstName
-    this.lastName = this.doc.lastName
     this.lastNam = this.doc.lastName
     this.company = this.doc.company
     this.address1 = this.doc.address1
     this.address2 = this.doc.address2
     this.cardNumber = this.doc.cardNumber
-    this.cardholder_firstame = this.doc.firstName
-    this.cardholder_lastName = this.doc.lastName
+    this.firstName = this.doc.firstName
+    this.lastName = this.doc.lastName
     this.month = this.doc.month
     this.year = this.doc.year
     this.cvc2 = this.doc.cvc2

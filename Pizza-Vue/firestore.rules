@@ -1,24 +1,45 @@
+// A verzió meghatározása
 rules_version = '2';
-service cloud.firestore {
+
+// A szolgáltatás megadása
+service cloud.firestore { 
+  // Az adatbázis megadása  
   match /databases/{database}/documents {
+    // Orders dokumentumtároló és annak a szabályai
     match /orders/{order} {
+      // Írási jogosultság ha a felhasználó hitelesítve van.
       allow write: if request.auth.uid != null;
     }
+    
+    // Users dokumentumtároló és annak a szabályai
     match /users/{user} {
+      // Írási és olvasási jogosultság, ha a felhasználó hitelesítve van
+      // Csak a saját dokumentumja adatait képes megváltoztatni
       allow read, write: if request.auth.uid == user;
     }
+    
+    // available_toppings dokumentumtároló és annak a szabályai
     match /available_toppings/{topping} {
-      allow read;
+      // Olvasási jog garantálása mindig
+      allow read: if true;
     }
+    
+    // available_countertops dokumentumtároló és annak a szabályai
     match /available_countertops/{countertop} {
-      allow read;
+      allow read: if true;
     }
+    
+    // available_drinks dokumentumtároló és annak a szabályai
     match /available_drinks/{drink} {
-      allow read;
+      allow read: if true;
     }
+    
+    // pizzas dokumentumtároló és annak a szabályai
     match /pizzas/{pizza} {
-      allow read;
+      allow read: if true;
     }
+    
+    // feedbacks dokumentumtároló és annak a szabályai
     match /feedbacks/{feedback} {
       allow write: if request.auth.uid != null;
     }
