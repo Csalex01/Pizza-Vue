@@ -161,9 +161,7 @@ export default {
     }
   },
   methods: {
-    updateTextLabels() {
-      window.M.updateTextFields()
-    }
+
   },
   async beforeMount() {
     this.user = firebase.auth().currentUser
