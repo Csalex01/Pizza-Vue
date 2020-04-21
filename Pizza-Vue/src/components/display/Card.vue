@@ -16,10 +16,14 @@
           Details
           <i class="material-icons right">info</i>
         </a>
-        <a v-if="loggedIn" class="btn waves-effect waves-light">
+        <router-link
+          :to="{ name: 'Custom_Order', params: { param_pizza: this.id }}"
+          v-if="loggedIn"
+          class="btn waves-effect waves-light"
+        >
           Order
           <i class="material-icons right">add_shopping_cart</i>
-        </a>
+        </router-link>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">
@@ -47,6 +51,7 @@ import db from "@/firebase/init"
 export default {
   name: "Card",
   props: {
+    id: null,
     name: null,
     description: null,
     price: null,

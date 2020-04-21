@@ -132,7 +132,7 @@
 <script>
 import firebase from "firebase"
 import db from "@/firebase/init"
-import formValidator from "../CommonFunctions/FormValidator"
+import formValidator from "../CommonFunctions/SignupFormValidator"
 
 import slugify from "slugify"
 

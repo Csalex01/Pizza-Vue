@@ -15,6 +15,7 @@
     </div>
     <div v-for="pizza in pizzas" :key="pizza.id">
       <Card
+        :id="pizza.id"
         :name="pizza.data.name"
         :description="pizza.data.description"
         :price="pizza.data.price"

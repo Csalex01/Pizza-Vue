@@ -175,6 +175,7 @@ import Alert from "../feedback/Alert"
 export default {
   name: "Custom_Order",
   components: { Card, Alert },
+  params: { param_pizza: "European" },
   data() {
     return {
       available_toppings: [],
@@ -319,7 +320,8 @@ export default {
     })
 
 
-    this.checked_pizza = this.available_pizzas[0].id
+    let index = (this.$route.params.param_pizza) ? this.available_pizzas.findIndex(el => el.id == this.$route.params.param_pizza) : 0
+    this.checked_pizza = this.available_pizzas[index].id
     this.checked_countertop = this.available_countertops[0].id
     this.checked_size = "small"
 
