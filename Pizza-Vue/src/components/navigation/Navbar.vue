@@ -27,7 +27,7 @@
 
           <div v-if="!loggedIn">
             <li class="right">
-              <router-link :to="{ name: 'Signup' }" class="btn">Signup</router-link>
+              <router-link :to="{ name: 'Signup' }" class="btn teal waves-effect waves-light">Signup</router-link>
             </li>
             <li class="right">
               <router-link :to="{ name: 'Login' }">Login</router-link>
@@ -146,10 +146,9 @@ export default {
   padding: 0 25px 0 25px;
 }
 
-.navbar a:focus {
+.navbar a:active {
   box-shadow: none;
   border: none;
   outline: none;
-  /* background-color: rgba(200, 0, 0, 0.5); */
 }
 </style>
