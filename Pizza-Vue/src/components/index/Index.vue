@@ -4,15 +4,6 @@
       <i class="material-icons" style="font-size: 40px">home</i>
       Home
     </h2>
-    <!-- <div class="row">
-      <div class="col s12 m12 l12 xl12">
-        <div class="row">
-          <h4 class="col s12 teal-text darken-4">Today's special offer</h4>
-        </div>
-        <div class="row"></div>
-      </div>
-    </div>-->
-
     <div class="row">
       <div class="col s12 m12 l6 xl6">
         <div class="row">
@@ -34,7 +25,7 @@
 
       <div class="col s12 m12 l6 xl6">
         <div class="row">
-          <h4 class="teal-text darken-4">Products</h4>
+          <h4 class="teal-text darken-4">Check out our products!</h4>
         </div>
         <div class="row">
           <Slideshow></Slideshow>
