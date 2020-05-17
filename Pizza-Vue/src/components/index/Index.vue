@@ -19,7 +19,7 @@
           <h4 class="teal-text darken-4">About us</h4>
         </div>
 
-        <div class="row">
+        <div class="row about">
           <p>
             We are a small pizzeria located in Gheorgheni, Romania.
             You can expect quality products from us, baked with care and done with passion.
@@ -34,41 +34,10 @@
 
       <div class="col s12 m12 l6 xl6">
         <div class="row">
-          <h4 class="teal-text darken-4">Reviews</h4>
+          <h4 class="teal-text darken-4">Products</h4>
         </div>
         <div class="row">
-          <div class="col s12">
-            <div class="row">
-              <p class="left-margin">
-                <span class="teal-text darken-4">Person 1:</span>
-                <span>One of the best out there!</span>
-              </p>
-            </div>
-            <div class="row">
-              <p class="left-margin">
-                <span class="teal-text darken-4">Person 2:</span>
-                <span>One of the best out there!</span>
-              </p>
-            </div>
-            <div class="row">
-              <p class="left-margin">
-                <span class="teal-text darken-4">Person 3:</span>
-                <span>One of the best out there!</span>
-              </p>
-            </div>
-            <div class="row">
-              <p class="left-margin">
-                <span class="teal-text darken-4">Person 4:</span>
-                <span>One of the best out there!</span>
-              </p>
-            </div>
-            <div class="row">
-              <p class="left-margin">
-                <span class="teal-text darken-4">Person 5:</span>
-                <span>One of the best out there!</span>
-              </p>
-            </div>
-          </div>
+          <Slideshow></Slideshow>
         </div>
       </div>
     </div>
@@ -76,8 +45,11 @@
 </template>
 
 <script>
+import Slideshow from "@/components/display/Slideshow"
+
 export default {
   name: "Index",
+  components: { Slideshow },
   data() {
     return {
     }
@@ -89,14 +61,9 @@ export default {
 span,
 p {
   font-size: 20px;
-  text-align: justify;
 }
 
 .main {
   padding: 0 20px;
-}
-
-.left-margin {
-  margin: 0 30px;
 }
 </style>
