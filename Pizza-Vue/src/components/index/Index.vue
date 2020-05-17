@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col s12 m12 l6 xl6">
         <div class="row">
-          <h4 class="teal-text darken-4">About us</h4>
+          <h4 class="teal-text darken-4">About Us</h4>
         </div>
 
         <div class="row about">
@@ -25,7 +25,7 @@
 
       <div class="col s12 m12 l6 xl6">
         <div class="row">
-          <h4 class="teal-text darken-4">Check out our products!</h4>
+          <h4 class="teal-text darken-4">Current offers</h4>
         </div>
         <div class="row">
           <Slideshow></Slideshow>
