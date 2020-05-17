@@ -1,5 +1,5 @@
 <template>
-  <div v-if="currentImage" class="col s12" id="slideshow_container">
+  <div v-if="currentImage" class="row col s12" id="slideshow_container">
     <router-link
       class="disabled"
       id="order_pizza"
@@ -127,7 +127,7 @@ export default {
 #slideshow_container,
 #order_pizza {
   position: relative;
-
+  width: 100%;
   height: 350px;
 }
 
@@ -135,7 +135,7 @@ export default {
   position: relative;
   margin: 0 20px;
   object-fit: cover;
-  object-position: 0 50%;
+  object-position: 50% 50%;
 
   width: 90%;
   height: inherit;

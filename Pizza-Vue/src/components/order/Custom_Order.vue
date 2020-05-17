@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <h2 class="teal-text darken-4">
+    <h3 class="teal-text darken-4">
       <i class="material-icons" style="font-size: 40px">add_shopping_cart</i>
       Custom Order
-    </h2>
+    </h3>
 
     <form action class="col s12">
       <div class="col s12 m12 l7 xl7">

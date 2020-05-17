@@ -1,10 +1,10 @@
 <template>
   <div class="row">
     <div class="row">
-      <h2 class="teal-text darken-4">
+      <h3 class="teal-text darken-4">
         <i class="material-icons" style="font-size: 40px">email</i>
         Contact
-      </h2>
+      </h3>
     </div>
 
     <div class="row">

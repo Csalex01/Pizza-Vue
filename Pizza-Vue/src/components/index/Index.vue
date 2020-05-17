@@ -1,9 +1,9 @@
 <template>
   <div class="row main">
-    <h2 class="teal-text darken-4">
+    <h3 class="teal-text darken-4">
       <i class="material-icons" style="font-size: 40px">home</i>
       Home
-    </h2>
+    </h3>
     <div class="row">
       <div class="col s12 m12 l6 xl6">
         <div class="row">
@@ -28,7 +28,7 @@
           <h4 class="teal-text darken-4">Current offers</h4>
         </div>
         <div class="row">
-          <Slideshow></Slideshow>
+          <Slideshow class="slideshow"></Slideshow>
         </div>
       </div>
     </div>
@@ -52,6 +52,10 @@ export default {
 span,
 p {
   font-size: 20px;
+}
+
+.slideshow {
+  margin: 0 auto;
 }
 
 .main {

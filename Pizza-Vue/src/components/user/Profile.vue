@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <h2 class="teal-text darken-4">
+    <h3 class="teal-text darken-4">
       <i class="material-icons" style="font-size: 40px">account_circle</i>
       Profile
-    </h2>
+    </h3>
 
     <div class="row">
       <form class="col s12">
