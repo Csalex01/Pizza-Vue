@@ -1,13 +1,18 @@
 <template>
   <div v-if="currentImage" class="col s12" id="slideshow_container">
     <router-link
+      class="disabled"
       id="order_pizza"
       :to="{ name: 'Custom_Order', params: { param_pizza: this.currentImage.id }}"
     >
       <img :src="currentImage.img" class="row z-depth-2" id="slideshow_image" />
     </router-link>
-    <div class="btn" id="nextButton" @click="changeImage(1)">Next</div>
-    <div class="btn" id="prevButton" @click="changeImage(-1)">Prev</div>
+    <div class="btn" id="nextButton" @click="changeImage(1)">
+      <i class="material-icons">arrow_forward</i>
+    </div>
+    <div class="btn" id="prevButton" @click="changeImage(-1)">
+      <i class="material-icons">arrow_back</i>
+    </div>
     <h4 class="white-text" id="image_name">{{ currentImage.name }}</h4>
   </div>
 </template>
@@ -105,6 +110,8 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  padding: 0 5px;
 
   font-size: 20px;
 }
