@@ -21,8 +21,8 @@
               class="s12 offset-m3 m6"
             />
 
-            <div class="row col s12">
-              <p v-for="pizza in available_pizzas" :key="pizza.id">
+            <div class="row col s12 flex-container">
+              <div class="flex-item" v-for="pizza in available_pizzas" :key="pizza.id">
                 <label :for="pizza.id">
                   <input
                     type="radio"
@@ -33,7 +33,7 @@
                   />
                   <span>{{ pizza.data.name }}</span>
                 </label>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -43,8 +43,8 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Toppings</h4>
-            <div class="row col s12">
-              <p v-for="topping in available_toppings" :key="topping.id">
+            <div class="row col s12 flex-container">
+              <div class="flex-item" v-for="topping in available_toppings" :key="topping.id">
                 <label :for="topping.id">
                   <input
                     type="checkbox"
@@ -55,7 +55,7 @@
                   />
                   <span>{{ topping.data.name }}</span>
                 </label>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -63,8 +63,12 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Countertops</h4>
-            <div class="row col s12">
-              <p v-for="countertop in available_countertops" :key="countertop.id">
+            <div class="row col s12 flex-container">
+              <div
+                class="flex-item"
+                v-for="countertop in available_countertops"
+                :key="countertop.id"
+              >
                 <label :for="countertop.id">
                   <input
                     type="radio"
@@ -75,7 +79,7 @@
                   />
                   <span>{{ countertop.data.name }}</span>
                 </label>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -84,7 +88,7 @@
           <div class="col s12">
             <h4 class="teal-text darken-4">Size</h4>
             <div class="row col s12">
-              <p>
+              <div class="size-item">
                 <label for="small">
                   <input
                     type="radio"
@@ -95,9 +99,9 @@
                   />
                   <span>Small</span>
                 </label>
-              </p>
+              </div>
 
-              <p>
+              <div class="size-item">
                 <label for="medium">
                   <input
                     type="radio"
@@ -108,9 +112,9 @@
                   />
                   <span>Medium</span>
                 </label>
-              </p>
+              </div>
 
-              <p>
+              <div class="size-item">
                 <label for="large">
                   <input
                     type="radio"
@@ -121,7 +125,7 @@
                   />
                   <span>Large</span>
                 </label>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -129,8 +133,8 @@
         <div class="row">
           <div class="col s12">
             <h4 class="teal-text darken-4">Drinks</h4>
-            <div class="row col s12">
-              <p v-for="drink in available_drinks" :key="drink.id">
+            <div class="row col s12 flex-container">
+              <div class="flex-item" v-for="drink in available_drinks" :key="drink.id">
                 <label :for="drink.id">
                   <input
                     type="radio"
@@ -141,7 +145,7 @@
                   />
                   <span>{{ drink.data.name }}</span>
                 </label>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -339,15 +343,27 @@ export default {
     this.pizza.toppings = this.available_pizzas[index].data.toppings
     this.pizza.size = this.checked_size;
 
-    // console.log(this.pizza);
-
   }
 }
 </script>
 
 <style>
-div > p {
+.size-item {
   display: inline-block;
-  margin: 10px 25px 0 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+}
+
+.flex-item {
+  display: inline-block;
+  width: 180px;
+  text-align: left;
+  margin: 0 auto;
 }
 </style>
