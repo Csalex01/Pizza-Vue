@@ -34,8 +34,8 @@
         <h4>Description</h4>
         <p class="description">{{ this.description }}</p>
         <h4>Toppings</h4>
-        <ul v-for="(topping, index) in toppings" :key="index">
-          <li class="topping">
+        <ul>
+          <li class="topping" v-for="(topping, index) in toppings" :key="index">
             <span>{{topping}}</span>
           </li>
         </ul>
@@ -109,7 +109,7 @@ hr {
 
 .topping {
   font-size: 15px;
-  padding: 0px;
+  margin: 5px auto;
 }
 
 .note {

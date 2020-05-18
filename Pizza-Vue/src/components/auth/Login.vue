@@ -1,7 +1,10 @@
 <template>
   <div class="login row">
     <div class="row">
-      <h2 class="teal-text darken-4">Login</h2>
+      <h3 class="teal-text darken-4">
+        <i class="material-icons" style="font-size: 40px">account_box</i>
+        Login
+      </h3>
     </div>
     <form class="col s12">
       <div class="row input-field col s12">
