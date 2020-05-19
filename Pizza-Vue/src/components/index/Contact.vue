@@ -80,25 +80,31 @@ export default {
   components: { Alert },
   methods: {
     async submitComment() {
-      const id = `feedback_${Date.now() % 100000}`
-
-      if (this.comment) {
-        const reponse = await db
-          .collection("feedbacks")
-          .doc(id)
-          .set({
-            uid: this.user.uid,
-            comment: this.comment
-          })
-
-        this.status = "success"
-        this.alertMessage = "We got your feedback. Thank you!"
-
-        this.comment = null
-
+      if (this.user === null) {
+        this.status = "failure"
+        this.alertMessage = "Please log in or register to send a feedback!"
       } else {
-        this.status = "warning"
-        this.alertMessage = "Please enter your feedback in the given field!"
+        const id = `feedback_${Date.now() % 100000}`
+
+        if (this.comment) {
+          const reponse = await db
+            .collection("feedbacks")
+            .doc(id)
+            .set({
+              uid: this.user.uid,
+              comment: this.comment,
+              timestamp: new Date().toDateString()
+            })
+
+          this.status = "success"
+          this.alertMessage = "We got your feedback. Thank you!"
+
+          this.comment = null
+
+        } else {
+          this.status = "warning"
+          this.alertMessage = "Please enter your feedback in the given field!"
+        }
       }
     }
   },

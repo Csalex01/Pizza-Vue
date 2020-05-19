@@ -280,7 +280,8 @@ export default {
           countertop: this.checked_countertop,
           drink: this.checked_drink,
           size: this.checked_size,
-          price: total
+          price: total,
+          timestamp: new Date().toDateString()
         })
 
 
