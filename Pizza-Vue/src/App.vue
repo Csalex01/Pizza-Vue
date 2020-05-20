@@ -23,7 +23,9 @@
               <span style="margin-left: -15px; font-size: 55px;">ue</span>
             </span>
             🍕
+            <br />
           </h2>
+          <span class="motto">" Better than Pizza Hut! "</span>
         </div>
       </div>
 
@@ -66,11 +68,11 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=B612:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
 
 /* :root {
   --left_right_height: 1000px; 
 } */
-
 body {
   overflow-y: scroll;
   background-color: #eef8ff;
@@ -143,5 +145,16 @@ body {
 
 #app {
   font-family: "Inconsolata", Helvetica, Arial, sans-serif;
+}
+
+.motto {
+  position: absolute;
+  bottom: 40px;
+  transform: translateX(-50%);
+  font-size: 25px;
+  font-weight: 900;
+  font-style: italic;
+  color: gray;
+  font-family: "Dancing Script", cursive;
 }
 </style>
