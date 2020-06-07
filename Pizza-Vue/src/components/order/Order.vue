@@ -57,7 +57,6 @@ export default {
         });
       })
       .catch(err => console.error(err))
-    // console.log(this.pizzas, this.pizzas.length)
   }
 };
 </script>

@@ -17,95 +17,95 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [{
-      path: '/',
-      name: 'Index',
-      auth: false,
-      component: Index,
-      meta: {
-        title: "Home",
-        metaTagss: [{
-          name: 'description',
-          content: 'The Home page of Pizza Vue'
-        }]
-      },
-      props: true
+    path: '/',
+    name: 'Index',
+    auth: false,
+    component: Index,
+    meta: {
+      title: "Home",
+      metaTags: [{
+        name: 'description',
+        content: 'The Home page of Pizza Vue'
+      }]
     },
-    {
-      path: '/login',
-      name: 'Login',
-      meta: {
-        title: "Login",
-        metaTagss: [{
-          name: 'description',
-          content: 'The Login page of Pizza Vue'
-        }]
-      },
-      component: Login
+    props: true
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    meta: {
+      title: "Login",
+      metaTags: [{
+        name: 'description',
+        content: 'The Login page of Pizza Vue'
+      }]
     },
-    {
-      path: '/signup',
-      name: 'Signup',
-      auth: false,
-      meta: {
-        title: "Signup",
-        metaTagss: [{
-          name: 'description',
-          content: 'The Signup page of Pizza Vue'
-        }]
-      },
-      component: Signup
+    component: Login
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    auth: false,
+    meta: {
+      title: "Signup",
+      metaTags: [{
+        name: 'description',
+        content: 'The Signup page of Pizza Vue'
+      }]
     },
-    {
-      path: "/order",
-      name: "Order",
-      auth: false,
-      meta: {
-        title: "Order",
-        metaTagss: [{
-          name: 'description',
-          content: 'The Order page of Pizza Vue'
-        }]
-      },
-      component: Order,
+    component: Signup
+  },
+  {
+    path: "/order",
+    name: "Order",
+    auth: false,
+    meta: {
+      title: "Order",
+      metaTags: [{
+        name: 'description',
+        content: 'The Order page of Pizza Vue'
+      }]
     },
-    {
-      path: "/order/custom",
-      name: "Custom_Order",
-      auth: true,
-      meta: {
-        title: "Custom Order",
-        metaTagss: [{
-          name: 'description',
-          content: 'The Custom Order page of Pizza Vue'
-        }]
-      },
-      component: Custom_Order
+    component: Order,
+  },
+  {
+    path: "/order/custom",
+    name: "Custom_Order",
+    auth: true,
+    meta: {
+      title: "Custom Order",
+      metaTags: [{
+        name: 'description',
+        content: 'The Custom Order page of Pizza Vue'
+      }]
     },
-    {
-      path: "/profile",
-      name: "Profile",
-      auth: true,
-      meta: {
-        title: "Profile",
-        metaTagss: [{
-          name: 'description',
-          content: 'Your Profile page'
-        }]
-      },
-      component: Profile
+    component: Custom_Order
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    auth: true,
+    meta: {
+      title: "Profile",
+      metaTags: [{
+        name: 'description',
+        content: 'Your Profile page'
+      }]
     },
-    {
-      path: "/contact",
-      name: "Contact",
-      auth: false,
-      meta: {
-        title: "Contact",
-        metaTagss: [{
-          name: 'description',
-          content: 'The Contact page of Pizza Vue'
-        }]
-      },
-      component: Contact
-    }
+    component: Profile
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    auth: false,
+    meta: {
+      title: "Contact",
+      metaTags: [{
+        name: 'description',
+        content: 'The Contact page of Pizza Vue'
+      }]
+    },
+    component: Contact
+  }
   ]
 })

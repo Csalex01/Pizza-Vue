@@ -1,17 +1,5 @@
 <template>
   <div id="app">
-    <!-- https://pizzeria-volare.ro/wp-content/uploads/revslider/steweysfullslider/5.jpg -->
-    <!-- https://lh3.googleusercontent.com/proxy/JAUWKadJ-45Zn_Jn_sXOb92hxRvhYV71vLlnnm7xdv1-XoEa_G0bAtVNy82EYrfoIyTEA67yGFz8Dcwp4T0yzNHu7tvOHz7anslgSObUA-9Ta80R12ZpATwvJ5q1nqorf0im -->
-    <!-- http://www.tallheights.com/wp-content/uploads/2016/06/background_purple.jpg -->
-    <!-- <div class="col left_ sticky hide-on-small-only">
-      <img
-        src="http://www.tallheights.com/wp-content/uploads/2016/06/background_purple.jpg"
-        alt
-        class="left_image"
-      />
-    </div>-->
-
-    <!-- <div style="clear: both hide-on-small-only"></div> -->
     <div class="center container">
       <!-- This part makes the 🍕PizzaVue🍕 loog possible -->
       <div class="iris hide-on-small-only">
@@ -35,16 +23,6 @@
 
       <Footer />
     </div>
-
-    <!-- <div class="side_banner">
-      <div class="left_ sticky hide-on-small-only">
-        <img src="http://www.tallheights.com/wp-content/uploads/2016/06/background_purple.jpg" alt />
-    </div>-->
-    <!-- <div class="col right_ sticky hide-on-small-only">RIGHT</div> -->
-    <!-- <div class="right_ sticky hide-on-small-only">
-        <img src="http://www.tallheights.com/wp-content/uploads/2016/06/background_purple.jpg" alt />
-      </div>
-    </div>-->
   </div>
 </template>
 
@@ -57,11 +35,11 @@ export default {
   components: { Navbar, Footer },
   watch: {
     '$route': (to, from) => {
-      document.title = `${to.meta.title} | 🍕 Pizza Vue 🍕` || "Home | 🍕 Pizza Vue 🍕"
+      document.title = `${to.meta.title} | 🍕 PizzaVue 🍕` || "Home | 🍕 PizzaVue 🍕"
     }
   },
   beforeCreate() {
-    document.title = `${this.$route.meta.title} | 🍕 Pizza Vue 🍕`
+    document.title = `${this.$route.meta.title} | 🍕 PizzaVue 🍕`
   }
 };
 </script>
@@ -70,16 +48,9 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=B612:400,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
 
-/* :root {
-  --left_right_height: 1000px; 
-} */
 body {
   overflow-y: scroll;
   background-color: #eef8ff;
-  /* background-color: red; */
-  /* background-image: -moz-linear-gradient(to bottom left, red, yellow);
-  background-repeat: no-repeat;
-  background-attachment: scroll; */
 }
 
 .sticky {
@@ -87,36 +58,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-}
-
-.left_,
-.right_ {
-  width: 10%;
-  top: 0px;
-  /* height: 1000px; */
-  /* background-image: url("http://www.tallheights.com/wp-content/uploads/2016/06/background_purple.jpg"); */
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.left_ > img,
-.right_ > img {
-  width: 100%;
-  height: 100%;
-}
-
-.left_ {
-  /* left: 0; */
-  transform: translateX(50%);
-  float: left;
-}
-
-.right_ {
-  /* margin: calc(var(--left_right_height) * (-2)) 0 0 90%; */
-  /* right: 0; */
-  transform: translate(-50%);
-  float: right;
 }
 
 .container {

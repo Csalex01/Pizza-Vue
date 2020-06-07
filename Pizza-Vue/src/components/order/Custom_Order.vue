@@ -266,10 +266,6 @@ export default {
       else if (this.checked_size == "large")
         total += 6
 
-      // console.log(countertop.price)
-      // console.log(drink.price)
-      // console.log(total)
-
       const response = await db
         .collection("orders")
         .doc(id)
@@ -324,12 +320,10 @@ export default {
       array: this.available_drinks
     })
 
-
     let index = (this.$route.params.param_pizza) ? this.available_pizzas.findIndex(el => el.id == this.$route.params.param_pizza) : 0
     this.checked_pizza = this.available_pizzas[index].id
     this.checked_countertop = this.available_countertops[0].id
     this.checked_size = "small"
-
   },
   async beforeUpdate() {
     let index = this.available_pizzas.findIndex(el => el.id == this.checked_pizza)
@@ -342,8 +336,7 @@ export default {
     this.pizza.name = this.available_pizzas[index].data.name
     this.pizza.price = this.available_pizzas[index].data.price
     this.pizza.toppings = this.available_pizzas[index].data.toppings
-    this.pizza.size = this.checked_size;
-
+    this.pizza.size = this.checked_size
   }
 }
 </script>

@@ -114,7 +114,6 @@ export default {
   mounted() {
     $('.sidenav').sidenav()
   }
-
 };
 </script>
 
