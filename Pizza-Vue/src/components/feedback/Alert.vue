@@ -42,14 +42,13 @@ export default {
 
 <style>
 .alert {
-  background: #acece6;
+  background: #a0e0ef;
   color: #155724;
   border-radius: 5px;
-  /* padding: 10px 20px 20px 20px; */
+  border: 1px solid #0cacf6ff;
   padding: 0 20px 0 20px;
   max-height: 50px;
   width: max-content;
-
   margin: 0 auto;
 }
 

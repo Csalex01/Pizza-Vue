@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import slugify from "slugify";
 import validator from "validator";
 import firebase from "firebase";
 import Alert from "../feedback/Alert";
@@ -79,7 +78,6 @@ export default {
         await firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
-        // this.$router.go(-1)
         this.$router.push({ name: "Index" })
       } catch (err) {
         this.feedback = err.message

@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col s12 m6 feedback">
         <h4 class="teal-text darken-4">Send us a feedback!</h4>
-        <form action>
+        <form>
           <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
             <textarea

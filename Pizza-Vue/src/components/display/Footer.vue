@@ -7,7 +7,7 @@
           href="http://pizzahutdelivery.ro"
           target="_blank"
         >here</a>
-        [PizzaHut Delivery]
+        [Pizza Hut Delivery]
         <br />&copy;Copyright 2020 PIZZAVUE RESTAURANT
       </p>
     </div>
